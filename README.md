@@ -3,7 +3,7 @@ Repositório de conteúdos relacionados a Residencia de Software
 
 ## Comandos que mais usaremos
 
-Sintam-se a vontade para acrescentar mais depois.. ou modificar o readme.md
+Sintam-se a vontade para acrescentar coisas depois.. ou modificar o readme.md para treinar. 
 
 ```	
 git clone
