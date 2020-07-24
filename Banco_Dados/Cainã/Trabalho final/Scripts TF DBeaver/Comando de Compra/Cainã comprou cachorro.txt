@@ -1,0 +1,9 @@
+insert into pedido (id_usuario)
+values (3)
+
+insert into item_pedido (quantidade_item , id_produto , id_pedido)
+values ('1', 6, 2)
+
+update produto 
+set quantidade_estoque = quantidade_estoque - 1
+where id_produto = 6

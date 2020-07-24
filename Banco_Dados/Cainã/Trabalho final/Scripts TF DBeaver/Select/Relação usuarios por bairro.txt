@@ -1,0 +1,3 @@
+select endereco.bairro, count(usuario.id_usuario) as numeros_de_bairro from usuario
+left join endereco on usuario.id_endereco = endereco.id_endereco
+group by bairro
