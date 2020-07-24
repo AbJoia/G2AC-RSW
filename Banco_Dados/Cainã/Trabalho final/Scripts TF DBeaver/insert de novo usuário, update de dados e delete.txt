@@ -1,0 +1,29 @@
+insert into endereco (rua, numero, bairro, cidade, estado, cep) 
+values('Rua México', '547', 'Centro', 'Rio de Janeiro', 'RJ', '00000-000');
+
+insert into usuario (nome, CPF, email, nome_usuario, data_nascimento, id_endereco) 
+values('Joãozinho', '00000000001', 'joaozinhoocria@gmail.com', 'joaozinho123', '1236-09-18', 6);
+
+insert into contato (ddd, fixo, movel, id_usuario) 
+values('21', null, '981004352', 7);
+
+update usuario
+set cpf = '99988877754', nome_usuario = 'joaozinhoObrabo'
+where id_usuario = 7;
+
+update usuario 
+set cpf = '12332145689', email = 'camilla.ferreira@hotmail.com'
+where id_usuario = 5;
+
+update endereco 
+set rua = 'Rua Presidente Sodré', numero = '500', cep = '25645-025'
+where id_endereco = 5;
+
+delete from contato 
+where id_contato = 6;
+
+delete from usuario 
+where id_usuario = 7;
+
+delete from endereco 
+where id_endereco = 6;
