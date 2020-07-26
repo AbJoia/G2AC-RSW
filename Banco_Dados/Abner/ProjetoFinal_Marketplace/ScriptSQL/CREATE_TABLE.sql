@@ -5,7 +5,7 @@
 	  BAIRRO VARCHAR(30) not null,
 	  CIDADE VARCHAR(40) not null,
 		  ESTADO CHAR(2) not null,
-		 	 CEP CHAR(9) not null);
+		 	 CEP CHAR(8) not null);
 
 			create table USUARIO(
 			  ID_USUARIO SERIAL primary key not null,
@@ -14,7 +14,7 @@
 				   EMAIL VARCHAR unique not null,
 			NOME_USUARIO VARCHAR(15) unique not null,
 		 DATA_NASCIMENTO DATE not null,
-		     ID_ENDERECO INTEGER,
+		     ID_ENDERECO INTEGER not null,
 foreign key(ID_ENDERECO) references ENDERECO);
 
 			create table CONTATO(
@@ -22,7 +22,7 @@ foreign key(ID_ENDERECO) references ENDERECO);
 					 DDD CHAR(2) not null,
 					FIXO CHAR(8) UNIQUE,
 				   MOVEL CHAR(9) UNIQUE,
-			  ID_USUARIO INTEGER,
+			  ID_USUARIO INTEGER not null,
  foreign key(ID_USUARIO) references USUARIO);
 
 			create table CATEGORIA(
@@ -37,21 +37,21 @@ foreign key(ID_ENDERECO) references ENDERECO);
 		  QUANTIDADE_ESTOQUE INTEGER not null,
 				   DESCRICAO VARCHAR(150),
 			  	        NOME VARCHAR(30) not null,
-				  ID_USUARIO INTEGER,
-				ID_CATEGORIA INTEGER,
+				  ID_USUARIO INTEGER not null,
+				ID_CATEGORIA INTEGER not null,
 	 foreign key(ID_USUARIO) references USUARIO,
    foreign key(ID_CATEGORIA) references CATEGORIA);
 
 			  create table PEDIDO(
 			     ID_PEDIDO SERIAL primary key not null,
 			DATA_REALIZADO TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP not null,
-			    ID_USUARIO INTEGER,
+			    ID_USUARIO INTEGER not null,
    foreign key(ID_USUARIO) references USUARIO);
 
 		   create table ITEM_PEDIDO(
 		 ID_ITEM_PEDIDO SERIAL primary key not null,
 		QUANTIDADE_ITEM INTEGER not null,
-			 ID_PRODUTO INTEGER,
-			  ID_PEDIDO INTEGER,
+			 ID_PRODUTO INTEGER not null,
+			  ID_PEDIDO INTEGER not null,
 foreign key(ID_PRODUTO) references PRODUTO,
  foreign key(ID_PEDIDO) references PEDIDO);

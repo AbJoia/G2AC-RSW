@@ -1,11 +1,11 @@
 --insert dados de cadastro
 
 insert into endereco (rua, numero, bairro, cidade, estado, cep) 
-	 values ('Ladeira Elisa Reuther da Silva', '65', 'Mosela', 'Petrópolis', 'RJ', '25675-171'),
-			('Sergipe', '95', 'Quitandinha', 'Petrópolis', 'RJ', '25650-490'),
-			('Vila Nicolau Antonio Mayworm', '36', 'Mosela', 'Petrópolis', 'RJ', '25675-311'),
-			('Travessa José Lafaiete', '469', 'Mosela', 'Petrópolis', 'RJ', '25675-155'),
-			('Siméria', '99', 'Siméria', 'Petrópolis', 'RJ', '25600-000');
+	 values ('Ladeira Elisa Reuther da Silva', '65', 'Mosela', 'Petrópolis', 'RJ', '25675171'),
+			('Sergipe', '95', 'Quitandinha', 'Petrópolis', 'RJ', '25650490'),
+			('Vila Nicolau Antonio Mayworm', '36', 'Mosela', 'Petrópolis', 'RJ', '25675311'),
+			('Travessa José Lafaiete', '469', 'Mosela', 'Petrópolis', 'RJ', '25675155'),
+			('Siméria', '99', 'Siméria', 'Petrópolis', 'RJ', '25600000');
 
 insert into usuario (nome, CPF, email, nome_usuario, data_nascimento, id_endereco) 
 	 values ('Abner Joia', '13129182764', 'abnerjoia1991@gmail.com', 'AbJoia', '1991-02-08', 1),
@@ -71,11 +71,6 @@ values (1, 1, 4);
 update produto 
    set quantidade_estoque = quantidade_estoque - 1
  where id_produto = 1;
-insert into item_pedido (quantidade_item , id_produto , id_pedido)
-values (2, 4, 4);
-update produto 
-   set quantidade_estoque = quantidade_estoque - 2
- where id_produto = 4;
 
 insert into pedido (id_usuario)
 values (4);
