@@ -5,7 +5,7 @@ update usuario
  where id_usuario = 5;
 
 update endereco 
-   set rua = 'Rua Presidente Sodré', numero = '500', cep = '25645-025'
+   set rua = 'Rua Presidente Sodré', numero = '500', cep = '25645025'
  where id_endereco = 5;
 
 update contato 
