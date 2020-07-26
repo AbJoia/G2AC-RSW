@@ -41,6 +41,6 @@ inner join pedido pd
 		on ip.id_pedido = pd.id_pedido 
 inner join usuario u
 		on pd.id_usuario = u.id_usuario 
- 	 where pd.id_pedido = 2;
+ 	 where pd.id_pedido = 4;
 
 

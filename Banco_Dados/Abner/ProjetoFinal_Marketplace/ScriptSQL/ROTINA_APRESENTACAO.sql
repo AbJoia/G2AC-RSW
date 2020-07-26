@@ -9,10 +9,17 @@ insert into usuario
 insert into contato 
 	 values (default, '11', '33561256', '985661222', 6);
 	
+select * from usuario	
+select * from contato
+select * from endereco
+	
 -- Cadastro de Produto
 
 insert into produto 
 	 values (default, '2018-10-05', 1200, 5, 'Produto usado', 'Iphone', 6, 1);
+	
+select * from produto
+select * from categoria
 	
 -- Registro de venda
 
@@ -23,8 +30,11 @@ insert into item_pedido (quantidade_item , id_produto , id_pedido)
 	 values (2, 7, 6);
 	
 update produto 
-   set quantidade_estoque = quantidade_estoque - 2
+   set quantidade_estoque = quantidade_estoque - 2   
  where id_produto = 7;
+
+select * from pedido where pedido.id_usuario = 2;
+select * from item_pedido where item_pedido.id_pedido = 6;
 
 -- Gerar Nota Fiscal
 
@@ -42,12 +52,13 @@ inner join usuario u
 		on pd.id_usuario = u.id_usuario 
  	 where pd.id_pedido = 6;
 
--- Select de consultas
-	 
-select * from item_pedido where item_pedido.id_pedido = 6;	
-select * from pedido where pedido.id_usuario = 2;	
+-- Select de consultas	 
+	
 select * from usuario	
 select * from contato
 select * from endereco
-select * from categoria
 select * from produto
+select * from categoria
+select * from pedido where pedido.id_usuario = 2;
+select * from item_pedido where item_pedido.id_pedido = 6;
+
