@@ -3,7 +3,7 @@
 select p.nome as "Produto", c.nome as "Categoria"
   from produto p 
   join categoria c 
-    on p.id_produto = c.id_categoria
+    on p.id_categoria = c.id_categoria
  order by (c);
 
 -- Retorna relação de usuarios por localidade agrupado com group by

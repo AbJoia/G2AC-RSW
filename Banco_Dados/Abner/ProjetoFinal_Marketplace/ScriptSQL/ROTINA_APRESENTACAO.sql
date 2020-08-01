@@ -18,7 +18,7 @@ select * from endereco
 insert into produto 
 	 values (default, '2018-10-05', 1200, 5, 'Produto usado', 'Iphone', 6, 1);
 	
-select * from produto
+select * from produto where id_usuario = 6;
 select * from categoria
 	
 -- Registro de venda
