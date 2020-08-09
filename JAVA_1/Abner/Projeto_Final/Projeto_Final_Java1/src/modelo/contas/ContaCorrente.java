@@ -61,10 +61,17 @@ public class ContaCorrente extends Conta {
 	}
 
 	public String relatorioTributo() {
-		String extrato = "*******Banco G2AC********\n\n" + "Agência: " + this.idAgencia.getId() + "\nTitular: "
-				+ this.titular.getNome() + "\nCPF: " + this.titular.getCpf() + "\n\nTributos Cobrados:\nTaxa Saque: "
-				+ TAXA_SAQUE + "\nTaxa Deposito: " + TAXA_DEPOSITO + "\nTaxa Transferencia: " + TAXA_TRANSFERENCIA
-				+ "\nTotal Tributos: " + this.totalTributo + " " + sv.getValorSegurado();
+		String extrato = "-----------------------------------------"
+				+ "\n| Banco G2AC				|" 
+				+ "\n| Agência: " + this.idAgencia.getId() + "				|"
+				+ "\n| Titular: " + this.titular.getNome() + "				|"
+				+ "\n| CPF: " + this.titular.formatCpf() + "			|"
+				+ "\n|---------Tributos Cobrados-------------|"
+				+ "\n| Taxa Saque: " + String.format("%.2f", TAXA_SAQUE) + "			|"
+				+ "\n| Taxa Deposito: " + String.format("%.2f",TAXA_DEPOSITO) + "			|"
+				+ "\n| Taxa Transferencia: " + String.format("%.2f",TAXA_TRANSFERENCIA) + "		|"
+				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f",this.totalTributo) + "		|"
+				+ "\n-----------------------------------------";
 		return extrato;
 	}
 
