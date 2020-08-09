@@ -54,5 +54,19 @@ public class ContaPoupanca extends Conta {
 				+ "% de rendimento foi de: R$" + total;
 		return simulador;
 	}
+	
+	@Override
+	public String relatorioTributo() {
+		String extrato = "-----------------------------------------"
+				+ "\n| Banco G2AC				|" 
+				+ "\n| Agência: " + this.idAgencia.getId() + "				|"
+				+ "\n| Titular: " + this.titular.getNome() + "				|"
+				+ "\n| CPF: " + this.titular.formatCpf() + "			|"
+				+ "\n|---------Tributos Cobrados-------------|"
+				+ titular.buscaInformacaoDeSeguro() 
+				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f", this.titular.buscaValorTaxadoSeguro()) + "	|"
+				+ "\n-----------------------------------------";
+		return extrato;
+	}
 
 }

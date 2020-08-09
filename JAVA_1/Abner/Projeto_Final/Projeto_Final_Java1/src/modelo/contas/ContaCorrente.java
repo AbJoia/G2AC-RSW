@@ -4,9 +4,7 @@ public class ContaCorrente extends Conta {
 
 	private final double TAXA_DEPOSITO = 0.10;
 	private final double TAXA_SAQUE = 0.10;
-	private final double TAXA_TRANSFERENCIA = 0.20;
-	
-	private SeguroDeVida sv;
+	private final double TAXA_TRANSFERENCIA = 0.20;	
 
 	private String tipoConta;
 	private double totalTributo;
@@ -39,7 +37,6 @@ public class ContaCorrente extends Conta {
 			this.saldo += valor - TAXA_DEPOSITO;
 			atualizaTributado(TAXA_DEPOSITO);
 		}
-
 	}
 
 	@Override
@@ -50,7 +47,7 @@ public class ContaCorrente extends Conta {
 
 		} else {
 			this.saldo -= valor + TAXA_TRANSFERENCIA;
-			destino.saldo = valor; // Verificar
+			destino.saldo = valor; 								// Exception aqui!
 			atualizaTributado(TAXA_TRANSFERENCIA);
 		}
 
@@ -58,8 +55,9 @@ public class ContaCorrente extends Conta {
 
 	public void atualizaTributado(double tributo) {
 		this.totalTributo += tributo;
-	}
-
+	}	
+	
+	@Override
 	public String relatorioTributo() {
 		String extrato = "-----------------------------------------"
 				+ "\n| Banco G2AC				|" 
@@ -69,8 +67,8 @@ public class ContaCorrente extends Conta {
 				+ "\n|---------Tributos Cobrados-------------|"
 				+ "\n| Taxa Saque: " + String.format("%.2f", TAXA_SAQUE) + "			|"
 				+ "\n| Taxa Deposito: " + String.format("%.2f",TAXA_DEPOSITO) + "			|"
-				+ "\n| Taxa Transferencia: " + String.format("%.2f",TAXA_TRANSFERENCIA) + "		|"
-				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f",this.totalTributo) + "		|"
+				+ "\n| Taxa Transferencia: " + String.format("%.2f",TAXA_TRANSFERENCIA)+ "		|" + this.titular.buscaInformacaoDeSeguro()        
+				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f",this.totalTributo + this.titular.buscaValorTaxadoSeguro()) + "	|"
 				+ "\n-----------------------------------------";
 		return extrato;
 	}

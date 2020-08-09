@@ -10,10 +10,11 @@ public abstract class Conta {
 		this.titular = titular;
 		this.idAgencia = idAgencia;
 		this.saldo = saldo;
-	}
+	}	
 	
 	protected abstract void saque(double valor);
 	protected abstract void deposito(double valor);
 	protected abstract void transferePara(Conta destino, double valor);
 	protected abstract double getSaldo();
+	public abstract String relatorioTributo();
 }
