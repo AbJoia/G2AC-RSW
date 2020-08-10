@@ -15,6 +15,6 @@ public class MainTeste {
 		cc2.deposito(40);
 		cc2.transferePara(cp1, 20);
 		cc2.saque(30);
-		System.out.println(cp1.relatorioTributo());	
+		System.out.println(cc2.relatorioTributo());	
 	}
 }
