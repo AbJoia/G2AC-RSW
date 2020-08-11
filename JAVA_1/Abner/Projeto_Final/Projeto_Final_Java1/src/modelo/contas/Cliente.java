@@ -1,17 +1,11 @@
 package modelo.contas;
 
-public class Cliente {
-
-	private String nome;
-	private String cpf;
-	private String senha;
+public class Cliente extends Usuario {
+	
 	private SeguroDeVida seguro;	
-	private static final int tamanhoCPF = 11;
 
 	public Cliente(String nome, String cpf, String senha) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
+		super(nome, cpf, senha);		
 	}
 	
 	protected boolean verificaSeguro() {
@@ -42,22 +36,6 @@ public class Cliente {
 	
 	public void contrataSeguro(SeguroDeVida contrato) {
 		this.seguro = contrato;
-	}	
-
-	public String getNome() {
-		return this.nome;
-	}
-
-	public String getCpf() {
-		return this.cpf;
-	}	
-
-	public String formatCpf() {
-		if (this.cpf != null) {
-			if (cpf.length() == tamanhoCPF) {
-				return cpf.replaceAll("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})", "$1\\.$2\\.$3-$4");
-			}
-		}
-		return ("Cpf inválido.");
 	}
 }
+

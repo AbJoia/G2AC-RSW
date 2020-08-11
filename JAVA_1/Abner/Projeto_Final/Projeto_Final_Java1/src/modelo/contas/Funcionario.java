@@ -1,9 +1,16 @@
 package modelo.contas;
 
-public abstract class Funcionario {
+public abstract class Funcionario extends Usuario {	
 	
-	private String senha;
 	private String cargo;
-	private String cpf;
 
+	public Funcionario(String nome, String cpf, String senha, String cargo) {
+		super(nome, cpf, senha);
+		this.cargo = cargo;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}	
+	
 }

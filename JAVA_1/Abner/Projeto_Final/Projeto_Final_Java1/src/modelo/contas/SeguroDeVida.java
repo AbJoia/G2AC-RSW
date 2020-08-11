@@ -8,7 +8,7 @@ public class SeguroDeVida {
 	
 	public SeguroDeVida(double valor) {
 		if(valor > 0) {				
-			this.valorSegurado = debitaTaxa(valor);
+			this.valorSegurado = debitaTaxa(valor);  //Exception aqui!!
 			this.valorTaxado = valorTaxado(valor);			
 			
 		}else {
@@ -25,7 +25,7 @@ public class SeguroDeVida {
 	}
 	
 	private double debitaTaxa(double valor) {
-		return valor - (valor * TRIBUTO_SEGURO);
+		return valor; //- (valor * TRIBUTO_SEGURO);
 	}
 	
 	private double valorTaxado(double valor) {

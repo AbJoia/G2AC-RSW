@@ -18,5 +18,4 @@ public class TesteSeguro {
 		System.out.println(cc1.relatorioTributo());		
 
 	}
-
 }
