@@ -1,0 +1,20 @@
+Titular;Agencia;Saldo;tipoConta
+cliente1;agencia1;32856;Conta Corrente
+cliente2;agencia4;2000;Conta Poupanca
+cliente3;agencia3;45030;Conta Poupanca
+cliente4;agencia2;405283;Conta Corrente
+cliente5;agencia3;56231;Conta Corrente
+cliente6;agencia1;5284;Conta Poupanca
+cliente7;agencia1;2064;Conta Corrente
+cliente8;agencia4;1738542;Conta Corrente
+cliente9;agencia2;402;Conta Corrente
+cliente10;agencia4;67384;Conta Poupanca
+cliente11;agencia2;4852;Conta Corrente
+cliente12;agencia3;9423;Conta Poupanca
+gerente1;agencia1;58342;Conta Corrente
+gerente2;agencia2;8347;Conta Corrente
+gerente3;agencia3;93854;Conta Poupanca
+gerente4;agencia4;34256;Conta Corrente
+diretor1;agencia2;482936;Conta Poupanca
+diretor2;agencia4;372854;Conta Poupanca
+presidente;agencia1;2947328;Conta Corrente

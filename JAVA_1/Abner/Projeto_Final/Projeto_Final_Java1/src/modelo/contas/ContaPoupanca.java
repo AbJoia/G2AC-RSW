@@ -1,17 +1,19 @@
 package modelo.contas;
 
+import contas.Agencia;
+import modelo.usuario.Cliente;
+
 public class ContaPoupanca extends Conta {
 
 	private final double TAXA_RENDIMENTO = 0.002;
-	private String tipoConta;
+	private final String TIPO_CONTA = "Conta Poupanca";
 
-	public ContaPoupanca(Cliente titular, Agencia idAgencia, double saldo, String tipoConta) {
-		super(titular, idAgencia, saldo);
-		this.tipoConta = tipoConta;
+	public ContaPoupanca(Cliente titular, Agencia idAgencia, double saldo) {
+		super(titular, idAgencia, saldo);		
 	}
 
 	@Override
-	protected void saque(double valor) {
+	public void saque(double valor) {
 		if (valor > this.saldo) {
 			System.out.println("Saldo insuficiente");
 		} else {
@@ -21,7 +23,7 @@ public class ContaPoupanca extends Conta {
 	}
 
 	@Override
-	protected void deposito(double valor) {
+	public void deposito(double valor) {
 		if (valor < 0) {
 			System.out.println("Valor inválido");
 		} else {
@@ -31,7 +33,7 @@ public class ContaPoupanca extends Conta {
 	}
 
 	@Override
-	protected void transferePara(Conta destino, double valor) {
+	public void transferePara(Conta destino, double valor) {
 		if (this.saldo < valor) {
 			System.out.println(
 					"Não realizada! O valor a ser transferido mais o valor da taxa deve ser maior que o saldo atual");
@@ -44,7 +46,7 @@ public class ContaPoupanca extends Conta {
 	}
 
 	@Override
-	protected double getSaldo() {
+	public double getSaldo() {
 		return this.saldo;
 	}
 
@@ -59,7 +61,7 @@ public class ContaPoupanca extends Conta {
 	public String relatorioTributo() {
 		String extrato = "-----------------------------------------"
 				+ "\n| Banco G2AC				|" 
-				+ "\n| Agência: " + this.idAgencia.getId() + "				|"
+				+ "\n| Agência: " + this.idAgencia.getNumeroAgencia() + "				|"
 				+ "\n| Titular: " + this.titular.getNome() + "				|"
 				+ "\n| CPF: " + this.titular.formatCpf() + "			|"
 				+ "\n|---------Tributos Cobrados-------------|"
