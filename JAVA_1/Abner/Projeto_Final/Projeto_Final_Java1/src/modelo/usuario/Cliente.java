@@ -38,12 +38,6 @@ public class Cliente extends Usuario {
 	
 	public void contrataSeguro(SeguroDeVida contrato) {
 		this.seguro = contrato;
-	}
-
-	@Override
-	public boolean validarUsuario(String cpf, String senha) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	}	
 }
 

@@ -1,71 +1,69 @@
 package main.teste;
 
+import modelo.contas.*;
 import modelo.usuario.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
+import Sistema.CarregaArquivo;
+import contas.Agencia;
 
 public class TesteLogin {
 
-	public static void main(String[] args) throws IOException {		
+	public static void main(String[] args) throws IOException {
+
+		CarregaArquivo importa = new CarregaArquivo();
+
+		Map<String, Cliente> mapaCliente = importa.importaCliente();
+		Map<Integer, Agencia> mapaAgencia = importa.importaAgencia();
+		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
+		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
+		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();			
+
 		
-		Map<String, Cliente> mapaCliente = new HashMap<>();
-		Cliente c1;
+		Cliente cliente;
+		Gerente gerente;
+		Diretor diretor;
+		Presidente presidente;
+
+		Login logar = new Login();
+
+		String cpf = "76532189065";
+		String senha = "5619";
 		
-		String arquivo = "C:\\Users\\abner\\eclipse-workspace\\Projeto_Final_Java1\\src\\BaseDadosCSV\\tabela_cliente.csv";
-		BufferedReader ler = new BufferedReader(new FileReader(arquivo));
-		String linha;
-		linha = ler.readLine();
-		while((linha = ler.readLine()) != null) {
-			String [] dado = linha.split(";");
-			c1 = new Cliente(dado[0], dado[1], dado[2]);
-			mapaCliente.put(c1.getCpf(), c1);
-		}		
-		ler.close();
-		
-		/*for(int i = 0; i < mapaCliente.size(); i++) {
-			System.out.println(mapaCliente.get(get));
-		}*/
-		
-		Scanner sc = new Scanner(System.in);
-		
-		
-		
-		String cpf = "43627581324";
-		String senha = sc.next();
-		
-		Cliente c2 = mapaCliente.get(cpf);
-		
-		System.out.println(c2.getSenha());
-		
-		if(c2.getSenha() == senha) {
-			System.out.println("Senha Correta!");
-		}
-		else {
-			System.out.println();
-		}
-		
-		/*if(c2 != null) {			
-			if(sc.next() == c2.getSenha()) {				
-				System.out.println("Login Realizado!");
-			}else {
-				System.out.println("Dados incorretos!");
+
+		if (mapaFuncionario.get(cpf) != null) {
+			String cargo = mapaFuncionario.get(cpf).getCargo();
+
+			if (cargo.endsWith("Presidente")) {
+				presidente = (Presidente) mapaFuncionario.get(cpf);
+				if (logar.logar(presidente, senha)) {
+					System.out.println("chama tela");
+				} else {
+					System.out.println("Dados incorretos!");
+				}
+			} else if (cargo.endsWith("Diretor")) {
+				diretor = (Diretor) mapaFuncionario.get(cpf);
+				logar.logar(diretor, senha);
+				if (logar.logar(diretor, senha)) {
+					System.out.println("chama tela");
+				} else {
+					System.out.println("Dados incorretos!");
+				}
+			} else {
+				gerente = (Gerente) mapaFuncionario.get(cpf);
+				logar.logar(gerente, senha);
+				if (logar.logar(gerente, senha)) {
+					System.out.println("chama tela");
+				} else {
+					System.out.println("Dados incorretos!");
+				}
 			}
-			System.out.println("Existe");
+		} else if (mapaCliente.get(cpf) != null) {
+			cliente = (Cliente) mapaCliente.get(cpf);
+			logar.logar(cliente, senha);
+		} else {
+			System.out.println("Não Cadastrado!");
 		}
-		else {
-			System.out.println("Não Existe");
-		}*/
-		
-		
-		
-		
-		
-
 	}
-
 }

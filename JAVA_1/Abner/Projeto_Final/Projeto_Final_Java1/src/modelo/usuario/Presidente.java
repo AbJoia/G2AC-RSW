@@ -1,9 +1,15 @@
 package modelo.usuario;
 
-public class Presidente extends Funcionario {
-
-	public Presidente(String nome, String cpf, String senha, String cargo) {
-		super(nome, cpf, senha, cargo);
+public class Presidente extends Funcionario {	
+	
+	
+	public Presidente(String nome, String cpf, String senha) {
+		super(nome, cpf, senha);
+		this.cargo = "Presidente";
+	}
+	
+	public String getCargo() {
+		return this.cargo;
 	}
 
 	public void relatorioClienteDasAgencia() {
@@ -12,11 +18,5 @@ public class Presidente extends Funcionario {
 
 	public void relatorioTotalCapital() {
 		// falta implementar
-	}
-
-	@Override
-	public boolean validarUsuario(String cpf, String senha) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

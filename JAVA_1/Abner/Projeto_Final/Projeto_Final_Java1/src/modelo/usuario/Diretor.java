@@ -1,18 +1,17 @@
 package modelo.usuario;
 
-public class Diretor extends Funcionario {
+public class Diretor extends Funcionario {	
 	
-	public Diretor(String nome, String cpf, String senha, String cargo) {
-		super(nome, cpf, senha, cargo);
+	public Diretor(String nome, String cpf, String senha) {
+		super(nome, cpf, senha);
+		this.cargo = "Diretor";
 	}	
+	
+	public String getCargo() {
+		return this.cargo;
+	}
 	
 	public void relatorioClienteDasAgencia() {
 		// falta implementar
-	}
-
-	@Override
-	public boolean validarUsuario(String cpf, String senha) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

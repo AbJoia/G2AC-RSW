@@ -1,8 +1,6 @@
 package modelo.usuario;
 
-import Interfaces.AutenticaUsuario;
-
-public abstract class Usuario implements AutenticaUsuario {
+public abstract class Usuario {
 
 	private String nome;
 	private String cpf;

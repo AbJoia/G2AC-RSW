@@ -13,6 +13,7 @@ public class Agencia {
 	private ArrayList <ContaCorrente> contaCorrente = new ArrayList<ContaCorrente>();
 	private ArrayList <ContaPoupanca> contaPoupanca = new ArrayList<ContaPoupanca>();
 	
+		
 	public Agencia(int id) {
 		this.numeroAgencia = id;		
 	}

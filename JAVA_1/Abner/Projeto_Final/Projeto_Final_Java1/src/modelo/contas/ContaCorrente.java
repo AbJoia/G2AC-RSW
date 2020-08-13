@@ -1,7 +1,7 @@
 package modelo.contas;
 
 import contas.Agencia;
-import modelo.usuario.Cliente;
+import modelo.usuario.*;
 
 public class ContaCorrente extends Conta {
 

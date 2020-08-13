@@ -13,7 +13,11 @@ public abstract class Conta {
 		this.titular = titular;
 		this.idAgencia = idAgencia;
 		this.saldo = saldo;
-	}		
+	}
+	
+	public Cliente getTitular() {
+		return titular;
+	}
 	
 	protected abstract void saque(double valor);
 	protected abstract void deposito(double valor);
