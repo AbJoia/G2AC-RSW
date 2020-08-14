@@ -58,8 +58,8 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public void saque(double valor) {		
-		if (valor > this.saldo) {			
-			throw new ValorInvalidoException("Saldo insuficiente");
+		if (valor > this.saldo || valor <= 0) {			
+			throw new ValorInvalidoException("Não foi possivel realizar a operação.\nConfirme o valor digitado. Saldo atual: R$ " + this.saldo);
 		} else {
 			this.saldo -= valor + TAXA_SAQUE;			
 			this.totalSaque++;
@@ -97,12 +97,18 @@ public class ContaCorrente extends Conta {
 	
 	@Override
 	public String relatorioTributo() {
-		String extrato = "-----------------------------------------"
-				+ "\n| Banco G2AC				|" 
+		String extrato = 
+				     "-----------------------------------------"
+				+ "\n|                                       |"
+				+ "\n|             Banco G2AC	        |" 
+				+ "\n|                                       |"
 				+ "\n| Agência: " + this.idAgencia.getNumeroAgencia() + "				|"
-				+ "\n| Titular: " + this.titular.getNome() + "				|"
+				+ "\n| Titular: " + this.titular.getNome() + "              	|"
 				+ "\n| CPF: " + this.titular.formatCpf() + "			|"
-				+ "\n|---------Tributos Cobrados-------------|"
+				+ "\n| Tipo de Conta: Conta Corrente         |"
+				+ "\n|                                       |"
+				+ "\n|-----------Tributos Cobrados-----------|"
+				+ "\n|                                       |"
 				+ "\n| Taxa Saque: " + String.format("%.2f", TAXA_SAQUE) + "			|"
 				+ "\n| Total de Operações: " + this.totalSaque + "                 |\n| Total Gasto: " + String.format("%.2f", TAXA_SAQUE * this.totalSaque) + "			|"
 				+ "\n| Taxa Deposito: " + String.format("%.2f",TAXA_DEPOSITO) + "			|"
@@ -110,7 +116,7 @@ public class ContaCorrente extends Conta {
 				+ "\n| Taxa Transferencia: " + String.format("%.2f",TAXA_TRANSFERENCIA)+ "		|"
 				+ "\n| Total de Operações: " + this.totalTransferencia + "                 |\n| Total Gasto: " + String.format("%.2f", TAXA_TRANSFERENCIA * this.totalTransferencia) + "			|"
 				+ this.titular.buscaInformacaoDeSeguro()
-				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f",this.totalTributo() + this.titular.buscaValorTaxadoSeguro()) + "	|"
+				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f",this.totalTributo() + this.titular.buscaValorTaxadoSeguro()) + "	        |"
 				+ "\n-----------------------------------------";		
 		return extrato;
 	}

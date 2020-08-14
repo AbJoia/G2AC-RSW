@@ -20,7 +20,7 @@ public class ContaPoupanca extends Conta {
 
 	public void exportaDoc(String dados) throws IOException {
 
-		Date data = new Date(System.currentTimeMillis());		
+		Date data = new Date(System.currentTimeMillis());
 
 		String local = "src/exportaDoc/relatorioContaPoupanca" + data.getTime() + ".txt";
 		File file = new File(local);
@@ -46,8 +46,9 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void saque(double valor) {
-		if (valor > this.saldo) {
-			throw new ValorInvalidoException("Saldo insuficiente");
+		if (valor > this.saldo || valor <= 0) {
+			throw new ValorInvalidoException(
+					"Não foi possivel realizar a operação.\nConfirme o valor digitado. Saldo atual: R$ " + this.saldo);
 		} else {
 			this.saldo -= valor;
 			System.out.println("Operação conluida com sucesso!");
@@ -91,12 +92,14 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String relatorioTributo() {
-		String extrato = "-----------------------------------------" + "\n| Banco G2AC				|" + "\n| Agência: "
-				+ this.idAgencia.getNumeroAgencia() + "				|" + "\n| Titular: " + this.titular.getNome()
-				+ "				|" + "\n| CPF: " + this.titular.formatCpf() + "			|"
-				+ "\n|---------Tributos Cobrados-------------|" + titular.buscaInformacaoDeSeguro()
-				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f", this.titular.buscaValorTaxadoSeguro())
-				+ "	|" + "\n-----------------------------------------";
+		String extrato = "-----------------------------------------" + "\n|                                       |"
+				+ "\n|             Banco G2AC	        |" + "\n|                                       |"
+				+ "\n| Agência: " + this.idAgencia.getNumeroAgencia() + "                         |" + "\n| Titular: "      
+				+ this.titular.getNome() + "                  |" + "\n| CPF: " + this.titular.formatCpf() + "			|"
+				+ "\n| Tipo de Conta: Conta Poupança         |" + "\n|---------Tributos Cobrados-------------|"
+				+ titular.buscaInformacaoDeSeguro() + "\n| Total Gasto c/ Tributos: "
+				+ String.format("%.2f", this.titular.buscaValorTaxadoSeguro()) + "	        |"
+				+ "\n-----------------------------------------";
 		return extrato;
 	}
 

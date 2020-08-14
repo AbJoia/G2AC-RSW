@@ -1,0 +1,22 @@
+-----------------------------------------
+|                                         |
+| Banco G2AC			                |
+|                                         |
+| Agência: 1234				|
+| Titular: Maria Brand				|
+| CPF: 345.718.082-30			|
+|Tipo de Conta: Conta Corrente          |
+|                                       |
+|---------Tributos Cobrados-------------|
+|                                       |
+| Taxa Saque: 0.10			|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Taxa Deposito: 0.10			|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Taxa Transferencia: 0.20		|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Total Gasto c/ Tributos: 0.00	|
+-----------------------------------------

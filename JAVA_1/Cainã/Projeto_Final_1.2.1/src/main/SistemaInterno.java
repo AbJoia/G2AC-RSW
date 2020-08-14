@@ -1,55 +1,60 @@
 package main;
 
-import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 import javax.management.RuntimeErrorException;
 
-import Sistema.CarregaArquivo;
-import Sistema.Telas;
+import Sistema.*;
 import contas.Agencia;
 import modelo.contas.*;
 import modelo.usuario.*;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) throws IOException {
-
+	public static void main(String[] args) {
+		Map<String, Cliente> mapaCliente = null;
+		Map<Integer, Agencia> mapaAgencia = null;
+		Map<String, Funcionario> mapaFuncionario = null;
+		Map<String, ContaCorrente> mapaContaCorrente = null;
+		Map<String, ContaPoupanca> mapaContaPoupanca = null;
+		
 		Scanner sc = new Scanner(System.in);
 		CarregaArquivo importa = new CarregaArquivo();
-
-		Map<String, Cliente> mapaCliente = importa.importaCliente();
-		Map<Integer, Agencia> mapaAgencia = importa.importaAgencia();
-		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
-		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
-		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
+		try {
+		mapaCliente = importa.importaCliente();
+		mapaAgencia = importa.importaAgencia();
+		mapaFuncionario = importa.importaFuncionario();
+		mapaContaCorrente = importa.importaContaCorrente();
+		mapaContaPoupanca = importa.importaContaPoupanca();
 		
+		}catch(IOException e){
+			System.out.println("Arquivo não localizado." + e);
+		}
+
 		Usuario usuarioLogado = null;
 		Conta contaLogada = null;
 		boolean ativo = false;
 		String cpf = "0";
 		String senha = "0";
 		int op;
-		
+
 		do {
-		try {
-		
-			Telas.telaLogin();
-			cpf = sc.next();
-			senha = sc.next();
-			usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
-			contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
-			ativo = true;
-		
-		}catch(Exception e) {
-			System.out.println("Dados Invalidos!" + e);	
-			
-		}
-		}while(!ativo);
-		
-	
-		
+			try {
+
+				Telas.telaLogin();
+				cpf = sc.next();
+				senha = sc.next();
+				usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
+				contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
+				ativo = true;
+
+			} catch (Exception e) {
+				System.out.println("Dados Invalidos!" + e);
+
+			}
+		} while (!ativo);
+
 		do {
 			op = sc.nextInt();
 			switch (op) {
@@ -82,6 +87,10 @@ public class SistemaInterno {
 				} else if (mapaFuncionario.get(usuarioLogado.getCpf()).getCargo().equals("Presidente")) {
 					Telas.telaRelatorioPresidente(usuarioLogado, mapaFuncionario, mapaContaCorrente, mapaContaPoupanca);
 				}
+				break;
+			case 0:
+				System.out.println("Programa Finalizado!");
+				System.exit(0);
 				break;
 
 			default:

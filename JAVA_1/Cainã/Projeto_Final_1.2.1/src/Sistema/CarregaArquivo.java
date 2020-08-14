@@ -25,8 +25,8 @@ public class CarregaArquivo {
 	BufferedReader ler;
 	String linha;
 
-	public Map<String, Cliente> importaCliente() throws IOException {
-				
+	public Map<String, Cliente> importaCliente() throws IOException{
+			
 		mapaCliente = new HashMap<>();
 		String arquivoCliente = "src/BaseDadosCSV/tabela_cliente.csv";
 		ler = new BufferedReader(new FileReader(arquivoCliente));
@@ -37,8 +37,8 @@ public class CarregaArquivo {
 			mapaCliente.put(cliente.getCpf(), cliente);
 		}
 		ler.close();
-
 		return mapaCliente;
+		
 	}
 
 	public Map<Integer, Agencia> importaAgencia() throws IOException {

@@ -22,10 +22,10 @@ public class Gerente extends Funcionario {
 	public String getCargo() {
 		return this.cargo;
 	}
-	
+
 	public void exportaDoc(String dados) throws IOException {
 
-		Date data = new Date(System.currentTimeMillis());		
+		Date data = new Date(System.currentTimeMillis());
 
 		String local = "src/exportaDoc/relatorioGerente" + data.getTime() + ".txt";
 		File file = new File(local);
@@ -49,8 +49,7 @@ public class Gerente extends Funcionario {
 		this.exportaDoc(relatorio);
 	}
 
-	public String relatorioGerente(Map<String, ContaCorrente> contaCorrente,
-			Map<String, ContaPoupanca> contaPoupanca) {
+	public String relatorioGerente(Map<String, ContaCorrente> contaCorrente, Map<String, ContaPoupanca> contaPoupanca) {
 
 		Set<String> cc = contaCorrente.keySet();
 		Set<String> cp = contaPoupanca.keySet();
@@ -70,7 +69,7 @@ public class Gerente extends Funcionario {
 		}
 
 		return "Agência [" + agencia.getNumeroAgencia() + "] a qual " + getNome() + " é responsável possui "
-				+ (contadorCorrente + contadorPoupanca) + " conta(s). \nSendo, " + contadorCorrente + " Conta(s) Corrente(s) e " + contadorPoupanca
-				+ " Conta(s) Poupança(s)";
+				+ (contadorCorrente + contadorPoupanca) + " conta(s). \nSendo, " + contadorCorrente
+				+ " Conta(s) Corrente(s) e " + contadorPoupanca + " Conta(s) Poupança(s)";
 	}
 }

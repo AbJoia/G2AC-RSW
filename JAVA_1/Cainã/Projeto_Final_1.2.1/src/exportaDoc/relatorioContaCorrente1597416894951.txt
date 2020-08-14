@@ -1,0 +1,17 @@
+-----------------------------------------
+| Banco G2AC				|
+| Agência: 5678				|
+| Titular: Augusto de Souza				|
+| CPF: 116.749.344-78			|
+|---------Tributos Cobrados-------------|
+| Taxa Saque: 0.10			|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Taxa Deposito: 0.10			|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Taxa Transferencia: 0.20		|
+| Total de Operações: 0                 |
+| Total Gasto: 0.00			|
+| Total Gasto c/ Tributos: 0.00	|
+-----------------------------------------
