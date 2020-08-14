@@ -1,5 +1,9 @@
 package modelo.usuario;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Date;
 import java.util.*;
 
 import contas.Agencia;
@@ -18,8 +22,34 @@ public class Gerente extends Funcionario {
 	public String getCargo() {
 		return this.cargo;
 	}
+	
+	public void exportaDoc(String dados) throws IOException {
 
-	public void relatorioGerente(Map<String, ContaCorrente> contaCorrente,
+		Date data = new Date(System.currentTimeMillis());		
+
+		String local = "src/exportaDoc/relatorioGerente" + data.getTime() + ".txt";
+		File file = new File(local);
+		try {
+			if (file.createNewFile()) {
+				System.out.println("Arquivo Criado!");
+			} else {
+				System.out.println("Arquivo ja existe!");
+			}
+		} catch (IOException e) {
+			System.out.println("Erro!" + e);
+		}
+
+		FileWriter f = new FileWriter(file.getAbsoluteFile());
+		f.write(dados);
+		f.close();
+
+	}
+
+	public void chamaExportaDoc(String relatorio) throws IOException {
+		this.exportaDoc(relatorio);
+	}
+
+	public String relatorioGerente(Map<String, ContaCorrente> contaCorrente,
 			Map<String, ContaPoupanca> contaPoupanca) {
 
 		Set<String> cc = contaCorrente.keySet();
@@ -39,8 +69,8 @@ public class Gerente extends Funcionario {
 			}
 		}
 
-		System.out.println("Agência [" + agencia.getNumeroAgencia() + "] a qual " + getNome() + " é responsável possui "
+		return "Agência [" + agencia.getNumeroAgencia() + "] a qual " + getNome() + " é responsável possui "
 				+ (contadorCorrente + contadorPoupanca) + " conta(s). \nSendo, " + contadorCorrente + " Conta(s) Corrente(s) e " + contadorPoupanca
-				+ " Conta(s) Poupança(s)");
+				+ " Conta(s) Poupança(s)";
 	}
 }

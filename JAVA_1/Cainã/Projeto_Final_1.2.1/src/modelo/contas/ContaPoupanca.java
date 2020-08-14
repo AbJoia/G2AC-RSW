@@ -1,5 +1,11 @@
 package modelo.contas;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Date;
+
+import Exceptions.ValorInvalidoException;
 import contas.Agencia;
 import modelo.usuario.Cliente;
 
@@ -9,38 +15,64 @@ public class ContaPoupanca extends Conta {
 	private final String TIPO_CONTA = "Conta Poupanca";
 
 	public ContaPoupanca(Cliente titular, Agencia idAgencia, double saldo) {
-		super(titular, idAgencia, saldo);		
+		super(titular, idAgencia, saldo);
+	}
+
+	public void exportaDoc(String dados) throws IOException {
+
+		Date data = new Date(System.currentTimeMillis());		
+
+		String local = "src/exportaDoc/relatorioContaPoupanca" + data.getTime() + ".txt";
+		File file = new File(local);
+		try {
+			if (file.createNewFile()) {
+				System.out.println("Arquivo Criado!");
+			} else {
+				System.out.println("Arquivo ja existe!");
+			}
+		} catch (IOException e) {
+			System.out.println("Erro!" + e);
+		}
+
+		FileWriter f = new FileWriter(file.getAbsoluteFile());
+		f.write(dados);
+		f.close();
+
+	}
+
+	public void chamaExportaDoc() throws IOException {
+		this.exportaDoc(relatorioTributo());
 	}
 
 	@Override
 	public void saque(double valor) {
 		if (valor > this.saldo) {
-			System.out.println("Saldo insuficiente");
+			throw new ValorInvalidoException("Saldo insuficiente");
 		} else {
 			this.saldo -= valor;
+			System.out.println("Operação conluida com sucesso!");
 		}
 
 	}
 
 	@Override
 	public void deposito(double valor) {
-		if (valor < 0) {
-			System.out.println("Valor inválido");
+		if (valor <= 0) {
+			throw new ValorInvalidoException("Valor inválido " + valor + ", informe um valor maior que 0");
 		} else {
 			this.saldo += valor;
-
+			System.out.println("Operação conluida com sucesso!");
 		}
 	}
 
 	@Override
 	public void transferePara(Conta destino, double valor) {
 		if (this.saldo < valor) {
-			System.out.println(
-					"Não realizada! O valor a ser transferido mais o valor da taxa deve ser maior que o saldo atual");
-
+			throw new ValorInvalidoException("Transferencia não realizada, confira seu saldo");
 		} else {
 			this.saldo -= valor;
-			destino.saldo += valor; // Verificar
+			destino.saldo += valor;
+			System.out.println("Operação conluida com sucesso!");
 		}
 
 	}
@@ -56,18 +88,15 @@ public class ContaPoupanca extends Conta {
 				+ "% de rendimento foi de: R$" + total;
 		return simulador;
 	}
-	
+
 	@Override
 	public String relatorioTributo() {
-		String extrato = "-----------------------------------------"
-				+ "\n| Banco G2AC				|" 
-				+ "\n| Agência: " + this.idAgencia.getNumeroAgencia() + "				|"
-				+ "\n| Titular: " + this.titular.getNome() + "				|"
-				+ "\n| CPF: " + this.titular.formatCpf() + "			|"
-				+ "\n|---------Tributos Cobrados-------------|"
-				+ titular.buscaInformacaoDeSeguro() 
-				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f", this.titular.buscaValorTaxadoSeguro()) + "	|"
-				+ "\n-----------------------------------------";
+		String extrato = "-----------------------------------------" + "\n| Banco G2AC				|" + "\n| Agência: "
+				+ this.idAgencia.getNumeroAgencia() + "				|" + "\n| Titular: " + this.titular.getNome()
+				+ "				|" + "\n| CPF: " + this.titular.formatCpf() + "			|"
+				+ "\n|---------Tributos Cobrados-------------|" + titular.buscaInformacaoDeSeguro()
+				+ "\n| Total Gasto c/ Tributos: " + String.format("%.2f", this.titular.buscaValorTaxadoSeguro())
+				+ "	|" + "\n-----------------------------------------";
 		return extrato;
 	}
 

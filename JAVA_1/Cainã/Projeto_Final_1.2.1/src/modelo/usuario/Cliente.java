@@ -37,7 +37,13 @@ public class Cliente extends Usuario {
 	}
 	
 	public void contrataSeguro(SeguroDeVida contrato) {
-		this.seguro = contrato;
+		if(!verificaSeguro()) {
+			this.seguro = contrato;
+			System.out.println("Seguro contratado com sucesso!");
+		}else {
+			System.out.println("Cliente ja possui seguro!");
+		}
+				
 	}	
 }
 

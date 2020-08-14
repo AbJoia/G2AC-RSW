@@ -1,5 +1,7 @@
 package contas;
 
+import Exceptions.ValorInvalidoException;
+
 public class SeguroDeVida {
 	
 	private double TRIBUTO_SEGURO = 0.2;	
@@ -8,11 +10,11 @@ public class SeguroDeVida {
 	
 	public SeguroDeVida(double valor) {
 		if(valor > 0) {				
-			this.valorSegurado = debitaTaxa(valor);  //Exception aqui!!
+			this.valorSegurado = debitaTaxa(valor);
 			this.valorTaxado = valorTaxado(valor);			
 			
-		}else {
-			System.out.println("Não é possivel contratar seguro para o valor informado!"); //Exception ???
+		}else {			
+			throw new ValorInvalidoException("Não é possivel contratar seguro para o valor informado!");
 		}				
 	}
 	

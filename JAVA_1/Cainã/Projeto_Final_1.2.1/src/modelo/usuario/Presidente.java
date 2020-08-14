@@ -1,5 +1,9 @@
 package modelo.usuario;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -19,8 +23,35 @@ public class Presidente extends Funcionario {
 	public String getCargo() {
 		return this.cargo;
 	}
+	
+	public void exportaDoc(ArrayList <String> relatorio) throws IOException {
 
-	public void relatorioDiretor(Map<String, ContaCorrente> contaCorrente, Map<String, ContaPoupanca> contaPoupanca) {
+		Date data = new Date(System.currentTimeMillis());		
+
+		String local = "src/exportaDoc/relatorioPresidente" + data.getTime() + ".txt";
+		File file = new File(local);
+		try {
+			if (file.createNewFile()) {
+				System.out.println("Arquivo Criado!");
+			} else {
+				System.out.println("Arquivo ja existe!");
+			}
+		} catch (IOException e) {
+			System.out.println("Erro!" + e);
+		}
+
+		FileWriter f = new FileWriter(file.getAbsoluteFile());
+		for(String i : relatorio) {
+			f.write(i + "\n");
+		}		
+		f.close();
+	}
+
+	public void chamaExportaDoc(ArrayList <String> relatorio) throws IOException {
+		this.exportaDoc(relatorio);
+	}
+
+	public ArrayList<String> relatorioDiretor(Map<String, ContaCorrente> contaCorrente, Map<String, ContaPoupanca> contaPoupanca) {
 
 		Set<String> cc = contaCorrente.keySet();
 		Set<String> cp = contaPoupanca.keySet();
@@ -47,16 +78,15 @@ public class Presidente extends Funcionario {
 		}
 		
 		Collections.sort(info);
-
-		for (String i : info) {
-			System.out.println(i);
-		}
+		
+		return info;		
 	}
 
-	public void relatorioPresidente(Map<String, ContaCorrente> contaCorrente, Map<String, ContaPoupanca> contaPoupanca) {
+	public ArrayList <String> relatorioPresidente(Map<String, ContaCorrente> contaCorrente, Map<String, ContaPoupanca> contaPoupanca) {
 		
 		Set<String> cc = contaCorrente.keySet();
 		Set<String> cp = contaPoupanca.keySet();
+		ArrayList<String> list = new ArrayList<>();
 		
 		Double capitalTotal = 0.0;
 		
@@ -68,6 +98,8 @@ public class Presidente extends Funcionario {
 			 capitalTotal += ((Map<String, ContaPoupanca>) contaPoupanca).get(c).getSaldo();
 		}
 		
-		System.out.println("Capital total: R$ " + String.format("%.2f", capitalTotal));		
+		String string =  "Capital total: R$ " + String.format("%.2f", capitalTotal);
+		list.add(string);
+		return list;
 	}
 }

@@ -1,13 +1,20 @@
 package Sistema;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
+import Exceptions.ValorInvalidoException;
 import contas.SeguroDeVida;
 import modelo.contas.Conta;
 import modelo.contas.ContaCorrente;
 import modelo.contas.ContaPoupanca;
 import modelo.usuario.Cliente;
+import modelo.usuario.Diretor;
+import modelo.usuario.Funcionario;
+import modelo.usuario.Gerente;
+import modelo.usuario.Presidente;
 import modelo.usuario.Usuario;
 
 public class Telas {
@@ -20,6 +27,7 @@ public class Telas {
 	public static void telaPrincipal() {
 
 		System.out.println("\n Operações");
+		System.out.println(" | 0 - Finalizar |");
 		System.out.println(" | 1 - Saque |");
 		System.out.println(" | 2 - Deposito |");
 		System.out.println(" | 3 - Tranferencia |");
@@ -28,8 +36,11 @@ public class Telas {
 		System.out.println(" | 5 - Saldo |");
 		System.out.println(" | 6 - Relatorio Tributação |");
 		System.out.println(" | 7 - Relatorio Rendimento Conta Poupanca |");
-		System.out.println(" | 0 - Finalizar |");
+	}
 
+	public static void telaRelatorioFuncionario() {
+
+		System.out.println(" | 8 - Relatorios internos |");
 	}
 
 	public static void telaSaque(Usuario usuarioLogado, Conta contaLogada, Map<String, ContaCorrente> mapaContaCorrente,
@@ -43,16 +54,22 @@ public class Telas {
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaCorrente) mapaContaCorrente.get(usuarioLogado.getCpf());
 			ContaCorrente cc = (ContaCorrente) contaLogada;
-			cc.saque(valor);
-
+			try {
+				cc.saque(valor);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 
 		else if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 			ContaPoupanca cp = (ContaPoupanca) contaLogada;
-			cp.saque(valor);
+			try {
+				cp.saque(valor);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
-
 	}
 
 	public static void telaDeposito(Usuario usuarioLogado, Conta contaLogada,
@@ -66,16 +83,22 @@ public class Telas {
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaCorrente) mapaContaCorrente.get(usuarioLogado.getCpf());
 			ContaCorrente cc = (ContaCorrente) contaLogada;
-			cc.deposito(valor);
-
+			try {
+				cc.deposito(valor);
+			} catch (ValorInvalidoException e) {
+				System.out.println(e);
+			}
 		}
 
 		else if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 			ContaPoupanca cp = (ContaPoupanca) contaLogada;
-			cp.deposito(valor);
+			try {
+				cp.deposito(valor);
+			} catch (ValorInvalidoException e) {
+				System.out.println(e);
+			}
 		}
-
 	}
 
 	public static void telaTransferencia(Usuario usuarioLogado, Conta contaLogada,
@@ -95,16 +118,22 @@ public class Telas {
 			if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
 				contaLogada = (ContaCorrente) mapaContaCorrente.get(usuarioLogado.getCpf());
 				ContaCorrente cc = (ContaCorrente) contaLogada;
-				cc.transferePara(contaDestino, valor);
-
+				try {
+					cc.transferePara(contaDestino, valor);
+				} catch (ValorInvalidoException e) {
+					System.out.println(e);
+				}
 			}
 
 			else if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 				contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 				ContaPoupanca cp = (ContaPoupanca) contaLogada;
-				cp.transferePara(contaDestino, valor);
+				try {
+					cp.transferePara(contaDestino, valor);
+				} catch (ValorInvalidoException e) {
+					System.out.println(e);
+				}
 			}
-
 		}
 
 		else if (mapaContaPoupanca.get(cpfDestinatario) != null) {
@@ -121,7 +150,6 @@ public class Telas {
 				ContaPoupanca cp = (ContaPoupanca) contaLogada;
 				cp.transferePara(contaDestino, valor);
 			}
-
 		}
 
 		else {
@@ -138,8 +166,12 @@ public class Telas {
 		if (mapaCliente.get(usuarioLogado.getCpf()) != null) {
 			usuarioLogado = (Cliente) mapaCliente.get(usuarioLogado.getCpf());
 			Cliente c = (Cliente) usuarioLogado;
-			c.contrataSeguro(new SeguroDeVida(valorSegurado));
-			System.out.println("Seguro contratado com sucesso!!!");
+			try {
+				c.contrataSeguro(new SeguroDeVida(valorSegurado));
+			} catch (ValorInvalidoException e) {
+				System.out.println(e);
+			}
+
 		} else {
 			System.out.println("Não é possível concluir a operação.");
 		}
@@ -162,57 +194,105 @@ public class Telas {
 	}
 
 	public static void telaRelatorioTributo(Usuario usuarioLogado, Conta contaLogada,
-			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
+			throws IOException {
 
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaCorrente) mapaContaCorrente.get(usuarioLogado.getCpf());
 			ContaCorrente cc = (ContaCorrente) contaLogada;
 			System.out.println(cc.relatorioTributo());
+			cc.chamaExportaDoc();
 		}
 
 		else if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 			ContaPoupanca cp = (ContaPoupanca) contaLogada;
 			System.out.println(cp.relatorioTributo());
+			cp.chamaExportaDoc();
 		}
 	}
 
 	public static void telaRelatorioRendimento(Usuario usuarioLogado, Conta contaLogada,
+
 			Map<String, ContaPoupanca> mapaContaPoupanca) {
 		Scanner sc = new Scanner(System.in);
-		
+
 		if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 			ContaPoupanca cp = (ContaPoupanca) contaLogada;
-			
+
 			System.out.println("Digite o valor que deseja simular: ");
 			double valor = sc.nextDouble();
 			System.out.println("Digite o número de dias que deseja simular: ");
 			int dia = sc.nextInt();
-			
-			cp.simulaRendimento(valor, dia);
-		}
-		else {
+			System.out.println(cp.simulaRendimento(valor, dia));
+		} else {
 			System.out.println("Não é uma conta poupança. Não é possível realizar a ação");
 		}
 	}
-}
 
-/*
- * System.out
- * .println("\n\n### SISCOM - Sistema Comercial de Controle de Compras e Vendas ###"
- * ); System.out.println("\n =========================");
- * System.out.println(" | 1 - Venda |");
- * System.out.println(" | 2 - Vendedor |");
- * System.out.println(" | 3 - Compra |");
- * System.out.println(" | 4 - Produto |");
- * System.out.println(" | 5 - Cliente |");
- * System.out.println(" | 6 - Fornecedor |");
- * System.out.println(" | 0 - Sair |");
- * System.out.println(" =========================\n"); opcao =
- * Console.readInt("Opção -> "); System.out.print("\n");
- * 
- * switch (opcao) { case 1: break; case 2: fornecedor(); break; case 3 , 4, 5:
- * cliente(); break; case 0: break; default:
- * System.out.println("Opção Inválida!"); break; } } while(opcao!=0)
- */
+	public static void telaRelatorioGerente(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
+			throws IOException {
+
+		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
+			Gerente gerente = (Gerente) mapaFuncionario.get(usuarioLogado.getCpf());
+			String relatorio = gerente.relatorioGerente(mapaContaCorrente, mapaContaPoupanca);
+			gerente.exportaDoc(relatorio);
+			System.out.println(relatorio);
+		} else {
+			System.out.println("Não é possível concluir a operação.");
+		}
+	}
+
+	public static void telaRelatorioDiretor(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
+			throws IOException {
+
+		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
+			Diretor diretor = (Diretor) mapaFuncionario.get(usuarioLogado.getCpf());
+			ArrayList<String> info = new ArrayList<>();
+			info = diretor.relatorioDiretor(mapaContaCorrente, mapaContaPoupanca);
+			diretor.exportaDoc(info);
+			for (String i : info) {
+				System.out.println(i);
+			}
+		} else {
+			System.out.println("Não é possível concluir a operação.");
+		}
+	}
+
+	public static void telaRelatorioPresidente(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
+			throws IOException {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> info = new ArrayList<>();
+		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
+			Presidente presidente = (Presidente) mapaFuncionario.get(usuarioLogado.getCpf());
+			System.out.println("| 1 - Relatorio Nivel Diretor |");
+			System.out.println("| 2 - Relatorio Nivel Presidende |");
+			int op = sc.nextInt();
+			if (op == 1) {
+				info = presidente.relatorioDiretor(mapaContaCorrente, mapaContaPoupanca);
+				presidente.chamaExportaDoc(info);
+				for (String i : info) {
+					System.out.println(i);
+				}
+
+			} else if (op == 2) {
+
+				info = presidente.relatorioPresidente(mapaContaCorrente, mapaContaPoupanca);
+				presidente.chamaExportaDoc(info);
+				for (String i : info) {
+					System.out.println(i);
+				}
+
+			} else {
+				System.out.println("Opção invalida!");
+			}
+
+		} else {
+			System.out.println("Não é possível concluir a operação.");
+		}
+	}
+}
