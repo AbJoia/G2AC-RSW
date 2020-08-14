@@ -2,6 +2,7 @@ package Sistema;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,9 +24,13 @@ public class Telas {
 		System.out.println("Bem vindo ao Banco G2AC!");
 		System.out.println("Digite seu CPF e Senha para Logar");
 	}
+	
+	public static void imprimeSaudacao(Usuario usuarioLogado) {
+		System.out.println("\n           " + mostraMensagem() + ", " + usuarioLogado.getNome() + "!");
+	}
 
-	public static void telaPrincipal() {
-
+	public static void telaPrincipal() {	
+				
 		System.out.println("\n               Operações                  ");
 		System.out.println(" | [0] Finalizar                           |");
 		System.out.println(" | [1] Saque                               |");
@@ -43,12 +48,26 @@ public class Telas {
 		System.out.println(" | [8] Relatorios internos                 |");
 	}
 
+	public static String mostraMensagem() {
+		Calendar cal = Calendar.getInstance();
+		int hora = cal.get(Calendar.HOUR_OF_DAY);
+		String mensagem = null;
+		if (hora < 12) {
+			mensagem = "Bom dia";
+		} else if (hora >= 12 && hora < 18) {
+			mensagem = "Boa Tarde";
+		} else {
+			mensagem = "Boa Noite";
+		}
+		return mensagem;
+	}
+
 	public static void telaSaque(Usuario usuarioLogado, Conta contaLogada, Map<String, ContaCorrente> mapaContaCorrente,
 			Map<String, ContaPoupanca> mapaContaPoupanca) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("\n Saque");
-		System.out.println("\n Digite o valor do saque: ");
+		System.out.println(" | Saque                                   |");
+		System.out.println(" | Digite o valor do saque:                |");
 		double valor = sc.nextDouble();
 
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
@@ -76,8 +95,8 @@ public class Telas {
 			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("\n Depósito");
-		System.out.println("\n Digite o valor do deposito: ");
+		System.out.println(" | Depósito                                |");
+		System.out.println(" | Digite o valor do deposito:             |");
 		double valor = sc.nextDouble();
 
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
@@ -105,10 +124,10 @@ public class Telas {
 			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("\n Transferência");
-		System.out.println("\n Digite o valor da transferência: ");
+		System.out.println(" | Transferência                           |");
+		System.out.println(" | Digite o valor da transferência:        |");
 		double valor = sc.nextDouble();
-		System.out.println("Digite o cpf do destinatário: ");
+		System.out.println(" | Digite o cpf do destinatário:           |");
 		String cpfDestinatario = sc.next();
 		Conta contaDestino;
 
@@ -160,7 +179,7 @@ public class Telas {
 	public static void telaSeguro(Usuario usuarioLogado, Map<String, Cliente> mapaCliente) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Digite o valor a ser segurado: ");
+		System.out.println(" | Digite o valor a ser segurado:          |");
 		double valorSegurado = sc.nextDouble();
 
 		if (mapaCliente.get(usuarioLogado.getCpf()) != null) {
@@ -236,7 +255,7 @@ public class Telas {
 			int dia = sc.nextInt();
 			System.out.println(cp.simulaRendimento(valor, dia));
 		} else {
-			System.out.println("Não é uma conta poupança. Não é possível realizar a ação");
+			System.out.println("Não é uma conta poupança.\nNão é possível realizar a ação!");
 		}
 	}
 
@@ -283,8 +302,8 @@ public class Telas {
 		ArrayList<String> info = new ArrayList<>();
 		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
 			Presidente presidente = (Presidente) mapaFuncionario.get(usuarioLogado.getCpf());
-			System.out.println("| 1 - Relatorio Nivel Diretor |");
-			System.out.println("| 2 - Relatorio Nivel Presidende |");
+			System.out.println(" | [1]  Relatorio Nivel Diretor            |");
+			System.out.println(" | [2]  Relatorio Nivel Presidende         |");
 			int op = sc.nextInt();
 			if (op == 1) {
 				info = presidente.relatorioDiretor(mapaContaCorrente, mapaContaPoupanca);

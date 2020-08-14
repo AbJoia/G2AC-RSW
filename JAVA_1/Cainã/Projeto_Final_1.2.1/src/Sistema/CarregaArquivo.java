@@ -13,7 +13,7 @@ public class CarregaArquivo {
 	Map<Integer, Agencia> mapaAgencia;
 	Map<String, Funcionario> mapaFuncionario;
 	Map<String, ContaCorrente> mapaContaCorrente;
-	Map<String, ContaPoupanca> mapaContaPoupanca;	
+	Map<String, ContaPoupanca> mapaContaPoupanca;
 
 	Agencia agencia;
 	ContaCorrente contaCorrente;
@@ -25,8 +25,8 @@ public class CarregaArquivo {
 	BufferedReader ler;
 	String linha;
 
-	public Map<String, Cliente> importaCliente() throws IOException{
-			
+	public Map<String, Cliente> importaCliente() throws IOException {
+
 		mapaCliente = new HashMap<>();
 		String arquivoCliente = "src/BaseDadosCSV/tabela_cliente.csv";
 		ler = new BufferedReader(new FileReader(arquivoCliente));
@@ -38,12 +38,12 @@ public class CarregaArquivo {
 		}
 		ler.close();
 		return mapaCliente;
-		
+
 	}
 
 	public Map<Integer, Agencia> importaAgencia() throws IOException {
-		
-		 mapaAgencia = new HashMap<>();
+
+		mapaAgencia = new HashMap<>();
 		String arquivoAgencia = "src/BaseDadosCSV/tabela_agencia.csv";
 		ler = new BufferedReader(new FileReader(arquivoAgencia));
 		linha = ler.readLine();
@@ -57,7 +57,7 @@ public class CarregaArquivo {
 	}
 
 	public Map<String, Funcionario> importaFuncionario() throws IOException {
-		
+
 		mapaFuncionario = new HashMap<>();
 		String arquivoGerente = "src/BaseDadosCSV/tabela_gerente.csv";
 		ler = new BufferedReader(new FileReader(arquivoGerente));
@@ -91,7 +91,7 @@ public class CarregaArquivo {
 	}
 
 	public Map<String, ContaCorrente> importaContaCorrente() throws IOException {
-		
+
 		mapaContaCorrente = new HashMap<>();
 		String arquivoContaCorrente = "src/BaseDadosCSV/tabela_contacorrente.csv";
 		ler = new BufferedReader(new FileReader(arquivoContaCorrente));
@@ -107,7 +107,7 @@ public class CarregaArquivo {
 	}
 
 	public Map<String, ContaPoupanca> importaContaPoupanca() throws IOException {
-		
+
 		mapaContaPoupanca = new HashMap<>();
 		String arquivoContaPoupanca = "src/BaseDadosCSV/tabela_contapoupanca.csv";
 		ler = new BufferedReader(new FileReader(arquivoContaPoupanca));

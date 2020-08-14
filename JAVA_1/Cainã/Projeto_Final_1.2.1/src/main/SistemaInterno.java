@@ -3,8 +3,6 @@ package main;
 import java.io.*;
 import java.util.*;
 
-import javax.management.RuntimeErrorException;
-
 import Sistema.*;
 import contas.Agencia;
 import modelo.contas.*;
@@ -18,28 +16,20 @@ public class SistemaInterno {
 		Map<String, Funcionario> mapaFuncionario = null;
 		Map<String, ContaCorrente> mapaContaCorrente = null;
 		Map<String, ContaPoupanca> mapaContaPoupanca = null;
-		
+
 		Scanner sc = new Scanner(System.in);
 		CarregaArquivo importa = new CarregaArquivo();
-<<<<<<< HEAD
 
-		Map<String, Cliente> mapaCliente = importa.importaCliente();
-		Map<Integer, Agencia> mapaAgencia = importa.importaAgencia();
-		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
-		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
-		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
-=======
 		try {
-		mapaCliente = importa.importaCliente();
-		mapaAgencia = importa.importaAgencia();
-		mapaFuncionario = importa.importaFuncionario();
-		mapaContaCorrente = importa.importaContaCorrente();
-		mapaContaPoupanca = importa.importaContaPoupanca();
-		
-		}catch(IOException e){
+			mapaCliente = importa.importaCliente();
+			mapaAgencia = importa.importaAgencia();
+			mapaFuncionario = importa.importaFuncionario();
+			mapaContaCorrente = importa.importaContaCorrente();
+			mapaContaPoupanca = importa.importaContaPoupanca();
+
+		} catch (IOException e) {
 			System.out.println("Arquivo não localizado." + e);
 		}
->>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 
 		Usuario usuarioLogado = null;
 		Conta contaLogada = null;
@@ -52,20 +42,22 @@ public class SistemaInterno {
 			try {
 
 				Telas.telaLogin();
+				System.out.println();
+				System.out.print("CPF: ");
 				cpf = sc.next();
+				System.out.print("Senha: ");
 				senha = sc.next();
 				usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
 				contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
 				ativo = true;
+				Telas.imprimeSaudacao(usuarioLogado);
+				
 
 			} catch (Exception e) {
 				System.out.println("Dados Invalidos!" + e);
-<<<<<<< HEAD
-=======
 
->>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 			}
-		} while (!ativo);
+		} while (!ativo);		
 
 		do {
 			op = sc.nextInt();
@@ -104,10 +96,6 @@ public class SistemaInterno {
 				System.out.println("Programa Finalizado!");
 				System.exit(0);
 				break;
-<<<<<<< HEAD
-=======
-
->>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 			default:
 				System.out.println("Opção Inválida!");
 				break;

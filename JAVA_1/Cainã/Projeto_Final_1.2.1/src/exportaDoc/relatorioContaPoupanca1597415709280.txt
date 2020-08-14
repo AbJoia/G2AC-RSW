@@ -1,9 +1,0 @@
------------------------------------------
-| Banco G2AC				|
-| Agência: 3456				|
-| Titular: Adele Smith				|
-| CPF: 847.356.223-74			|
-|---------Tributos Cobrados-------------|
-| Tributo Seguro De Vida: 200,00         |
-| Total Gasto c/ Tributos: 200,00	|
------------------------------------------
