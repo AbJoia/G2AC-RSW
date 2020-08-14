@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.management.RuntimeErrorException;
+
 import Sistema.CarregaArquivo;
 import Sistema.Telas;
 import contas.Agencia;
@@ -22,17 +24,32 @@ public class SistemaInterno {
 		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
 		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
 		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
-
-		String cpf;
-		String senha;
+		
+		Usuario usuarioLogado = null;
+		Conta contaLogada = null;
+		boolean ativo = false;
+		String cpf = "0";
+		String senha = "0";
 		int op;
-
-		Telas.telaLogin();
-		cpf = sc.next();
-		senha = sc.next();
-		Usuario usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
-		Conta contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
-
+		
+		do {
+		try {
+		
+			Telas.telaLogin();
+			cpf = sc.next();
+			senha = sc.next();
+			usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
+			contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
+			ativo = true;
+		
+		}catch(Exception e) {
+			System.out.println("Dados Invalidos!" + e);	
+			
+		}
+		}while(!ativo);
+		
+	
+		
 		do {
 			op = sc.nextInt();
 			switch (op) {
@@ -132,8 +149,7 @@ public class SistemaInterno {
 			System.out.println("Não Cadastrado!");
 		}
 
-		return usuarioLogado;
-
+		throw new NullPointerException();
 	}
 
 	public static boolean logar(Usuario usuario, String senha) {
@@ -141,7 +157,7 @@ public class SistemaInterno {
 		if (usuario.getSenha().endsWith(senha)) {
 			return true;
 		}
-		return false;
+		throw new RuntimeException("Senha incorreta!");
 	}
 
 	public static Conta buscaConta(Map<String, ContaCorrente> mapaContaCorrente,
