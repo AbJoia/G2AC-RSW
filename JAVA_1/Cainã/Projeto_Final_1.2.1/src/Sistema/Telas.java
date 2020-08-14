@@ -26,21 +26,21 @@ public class Telas {
 
 	public static void telaPrincipal() {
 
-		System.out.println("\n Operações");
-		System.out.println(" | 0 - Finalizar |");
-		System.out.println(" | 1 - Saque |");
-		System.out.println(" | 2 - Deposito |");
-		System.out.println(" | 3 - Tranferencia |");
-		System.out.println(" | 4 - Contratação Seguro de Vida |");
-		System.out.println("\n Relatorios");
-		System.out.println(" | 5 - Saldo |");
-		System.out.println(" | 6 - Relatorio Tributação |");
-		System.out.println(" | 7 - Relatorio Rendimento Conta Poupanca |");
+		System.out.println("\n               Operações                  ");
+		System.out.println(" | [0] Finalizar                           |");
+		System.out.println(" | [1] Saque                               |");
+		System.out.println(" | [2] Deposito                            |");
+		System.out.println(" | [3] Tranferencia                        |");
+		System.out.println(" | [4] Contratação Seguro de Vida          |");
+		System.out.println("\n                Relatorios                ");
+		System.out.println(" | [5] Saldo                               |");
+		System.out.println(" | [6] Relatorio Tributação                |");
+		System.out.println(" | [7] Relatorio Rendimento Conta Poupanca |");
 	}
 
 	public static void telaRelatorioFuncionario() {
 
-		System.out.println(" | 8 - Relatorios internos |");
+		System.out.println(" | [8] Relatorios internos                 |");
 	}
 
 	public static void telaSaque(Usuario usuarioLogado, Conta contaLogada, Map<String, ContaCorrente> mapaContaCorrente,
@@ -194,21 +194,30 @@ public class Telas {
 	}
 
 	public static void telaRelatorioTributo(Usuario usuarioLogado, Conta contaLogada,
-			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
-			throws IOException {
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 
 		if (mapaContaCorrente.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaCorrente) mapaContaCorrente.get(usuarioLogado.getCpf());
 			ContaCorrente cc = (ContaCorrente) contaLogada;
 			System.out.println(cc.relatorioTributo());
-			cc.chamaExportaDoc();
+
+			try {
+				cc.chamaExportaDoc();
+			} catch (IOException e) {
+				System.out.println("Impossivel gerar o relatório solicitado." + e);
+			}
 		}
 
 		else if (mapaContaPoupanca.get(usuarioLogado.getCpf()) != null) {
 			contaLogada = (ContaPoupanca) mapaContaPoupanca.get(usuarioLogado.getCpf());
 			ContaPoupanca cp = (ContaPoupanca) contaLogada;
 			System.out.println(cp.relatorioTributo());
-			cp.chamaExportaDoc();
+
+			try {
+				cp.chamaExportaDoc();
+			} catch (IOException e) {
+				System.out.println("Impossivel gerar o relatório solicitado." + e);
+			}
 		}
 	}
 
@@ -232,13 +241,16 @@ public class Telas {
 	}
 
 	public static void telaRelatorioGerente(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
-			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
-			throws IOException {
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 
 		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
 			Gerente gerente = (Gerente) mapaFuncionario.get(usuarioLogado.getCpf());
 			String relatorio = gerente.relatorioGerente(mapaContaCorrente, mapaContaPoupanca);
-			gerente.exportaDoc(relatorio);
+			try {
+				gerente.exportaDoc(relatorio);
+			} catch (IOException e) {
+				System.out.println("Impossivel gerar o relatório solicitado." + e);
+			}
 			System.out.println(relatorio);
 		} else {
 			System.out.println("Não é possível concluir a operação.");
@@ -246,14 +258,17 @@ public class Telas {
 	}
 
 	public static void telaRelatorioDiretor(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
-			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
-			throws IOException {
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 
 		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
 			Diretor diretor = (Diretor) mapaFuncionario.get(usuarioLogado.getCpf());
 			ArrayList<String> info = new ArrayList<>();
 			info = diretor.relatorioDiretor(mapaContaCorrente, mapaContaPoupanca);
-			diretor.exportaDoc(info);
+			try {
+				diretor.exportaDoc(info);
+			} catch (IOException e) {
+				System.out.println("Impossivel gerar o relatório solicitado." + e);
+			}
 			for (String i : info) {
 				System.out.println(i);
 			}
@@ -263,8 +278,7 @@ public class Telas {
 	}
 
 	public static void telaRelatorioPresidente(Usuario usuarioLogado, Map<String, Funcionario> mapaFuncionario,
-			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca)
-			throws IOException {
+			Map<String, ContaCorrente> mapaContaCorrente, Map<String, ContaPoupanca> mapaContaPoupanca) {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<String> info = new ArrayList<>();
 		if (mapaFuncionario.get(usuarioLogado.getCpf()) != null) {
@@ -274,7 +288,11 @@ public class Telas {
 			int op = sc.nextInt();
 			if (op == 1) {
 				info = presidente.relatorioDiretor(mapaContaCorrente, mapaContaPoupanca);
-				presidente.chamaExportaDoc(info);
+				try {
+					presidente.chamaExportaDoc(info);
+				} catch (IOException e) {
+					System.out.println("Impossivel gerar o relatório solicitado." + e);
+				}
 				for (String i : info) {
 					System.out.println(i);
 				}
@@ -282,7 +300,13 @@ public class Telas {
 			} else if (op == 2) {
 
 				info = presidente.relatorioPresidente(mapaContaCorrente, mapaContaPoupanca);
-				presidente.chamaExportaDoc(info);
+
+				try {
+					presidente.chamaExportaDoc(info);
+				} catch (IOException e) {
+					System.out.println("Impossivel gerar o relatório solicitado." + e);
+				}
+
 				for (String i : info) {
 					System.out.println(i);
 				}

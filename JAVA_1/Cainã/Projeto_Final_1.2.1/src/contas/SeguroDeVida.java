@@ -35,7 +35,7 @@ public class SeguroDeVida {
 	}
 	
 	public String getImprimeSegurodeVida() {		
-		return "\n| Tributo Seguro De Vida: " + String.format("%.2f", this.valorTaxado) + "         |";
+		return "\n| Tributo Seguro De Vida: " + String.format("%.2f", this.valorTaxado) + "          |";
 	
 }
 }

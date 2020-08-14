@@ -1,29 +1,45 @@
 package main;
 
-import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 import javax.management.RuntimeErrorException;
 
-import Sistema.CarregaArquivo;
-import Sistema.Telas;
+import Sistema.*;
 import contas.Agencia;
 import modelo.contas.*;
 import modelo.usuario.*;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) throws IOException {
-
+	public static void main(String[] args) {
+		Map<String, Cliente> mapaCliente = null;
+		Map<Integer, Agencia> mapaAgencia = null;
+		Map<String, Funcionario> mapaFuncionario = null;
+		Map<String, ContaCorrente> mapaContaCorrente = null;
+		Map<String, ContaPoupanca> mapaContaPoupanca = null;
+		
 		Scanner sc = new Scanner(System.in);
 		CarregaArquivo importa = new CarregaArquivo();
+<<<<<<< HEAD
 
 		Map<String, Cliente> mapaCliente = importa.importaCliente();
 		Map<Integer, Agencia> mapaAgencia = importa.importaAgencia();
 		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
 		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
 		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
+=======
+		try {
+		mapaCliente = importa.importaCliente();
+		mapaAgencia = importa.importaAgencia();
+		mapaFuncionario = importa.importaFuncionario();
+		mapaContaCorrente = importa.importaContaCorrente();
+		mapaContaPoupanca = importa.importaContaPoupanca();
+		
+		}catch(IOException e){
+			System.out.println("Arquivo não localizado." + e);
+		}
+>>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 
 		Usuario usuarioLogado = null;
 		Conta contaLogada = null;
@@ -44,6 +60,10 @@ public class SistemaInterno {
 
 			} catch (Exception e) {
 				System.out.println("Dados Invalidos!" + e);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 			}
 		} while (!ativo);
 
@@ -84,6 +104,10 @@ public class SistemaInterno {
 				System.out.println("Programa Finalizado!");
 				System.exit(0);
 				break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 308ab7bb82ea2c128c42f0f994cf7e6ab1065bcb
 			default:
 				System.out.println("Opção Inválida!");
 				break;

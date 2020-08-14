@@ -1,9 +1,9 @@
 -----------------------------------------
-| Banco G2AC				|
-| Agência: 3456				|
+|      Banco G2AC     |
+| Agência: 3456	            	|
 | Titular: Adele Smith				|
 | CPF: 847.356.223-74			|
-|Tipo de Conta: Conta Poupança|
+| Tipo de Conta: Conta Poupança         |
 |---------Tributos Cobrados-------------|
-| Total Gasto c/ Tributos: 0.00	|
+| Total Gasto c/ Tributos: 0.00	       |
 -----------------------------------------
