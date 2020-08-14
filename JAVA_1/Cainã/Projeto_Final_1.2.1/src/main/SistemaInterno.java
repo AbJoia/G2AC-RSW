@@ -24,32 +24,29 @@ public class SistemaInterno {
 		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
 		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
 		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
-		
+
 		Usuario usuarioLogado = null;
 		Conta contaLogada = null;
 		boolean ativo = false;
 		String cpf = "0";
 		String senha = "0";
 		int op;
-		
+
 		do {
-		try {
-		
-			Telas.telaLogin();
-			cpf = sc.next();
-			senha = sc.next();
-			usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
-			contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
-			ativo = true;
-		
-		}catch(Exception e) {
-			System.out.println("Dados Invalidos!" + e);	
-			
-		}
-		}while(!ativo);
-		
-	
-		
+			try {
+
+				Telas.telaLogin();
+				cpf = sc.next();
+				senha = sc.next();
+				usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
+				contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
+				ativo = true;
+
+			} catch (Exception e) {
+				System.out.println("Dados Invalidos!" + e);
+			}
+		} while (!ativo);
+
 		do {
 			op = sc.nextInt();
 			switch (op) {
@@ -83,7 +80,10 @@ public class SistemaInterno {
 					Telas.telaRelatorioPresidente(usuarioLogado, mapaFuncionario, mapaContaCorrente, mapaContaPoupanca);
 				}
 				break;
-
+			case 0:
+				System.out.println("Programa Finalizado!");
+				System.exit(0);
+				break;
 			default:
 				System.out.println("Opção Inválida!");
 				break;
