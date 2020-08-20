@@ -126,7 +126,4 @@ public class ContaCorrente extends Conta {
 		return "ContaCorrente [totalDeposito=" + totalDeposito + ", totalSaque=" + totalSaque + ", totalTransferencia="
 				+ totalTransferencia + ", titular=" + titular + ", idAgencia=" + idAgencia + ", saldo=" + saldo + "]";
 	}
-	
-	
-
 }
