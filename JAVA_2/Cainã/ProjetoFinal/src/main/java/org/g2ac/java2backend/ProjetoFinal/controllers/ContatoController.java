@@ -2,6 +2,8 @@ package org.g2ac.java2backend.ProjetoFinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.java2backend.ProjetoFinal.entities.Contato;
 import org.g2ac.java2backend.ProjetoFinal.services.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +29,22 @@ public class ContatoController {
 	}
 
 	@GetMapping("/{id}")
-	public Contato getContato(@PathVariable Integer id) {
+	public Contato getContato(@Valid @PathVariable Integer id) {
 		return contatoService.getContato(id);
 	}
 
 	@PostMapping
-	public void insertContato(@RequestBody Contato contato) {
+	public void insertContato(@Valid @RequestBody Contato contato) {
 		contatoService.insertContato(contato);
 	}
 	
 	@PutMapping("/{id}")
-	public Contato updateContato(@PathVariable Integer id, @RequestBody Contato newContato) {
+	public Contato updateContato(@Valid @PathVariable Integer id, @RequestBody Contato newContato) {
 		return contatoService.updateContato(id, newContato);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteContato(@PathVariable Integer id) {
+	public void deleteContato(@Valid @PathVariable Integer id) {
 		contatoService.deleteContato(id);
 	}
 }

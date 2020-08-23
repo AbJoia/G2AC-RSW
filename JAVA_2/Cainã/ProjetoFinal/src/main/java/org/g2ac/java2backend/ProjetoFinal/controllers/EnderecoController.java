@@ -2,6 +2,8 @@ package org.g2ac.java2backend.ProjetoFinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.java2backend.ProjetoFinal.entities.Endereco;
 import org.g2ac.java2backend.ProjetoFinal.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +29,22 @@ public class EnderecoController {
 	}
 	
 	@GetMapping("/{id}")
-	public Endereco getEndereco(@PathVariable Integer id) {
+	public Endereco getEndereco(@Valid @PathVariable Integer id) {
 		return enderecoService.getEndereco(id);
 	}
 	
 	@PostMapping
-	public void insertEndereco(@RequestBody Endereco endereco) {
+	public void insertEndereco(@Valid @RequestBody Endereco endereco) {
 		enderecoService.insertEndereco(endereco);
 	}
 	
 	@PutMapping("/{id}")
-	public Endereco updateEndereco(@PathVariable Integer id, @RequestBody Endereco newEndereco) {
+	public Endereco updateEndereco(@Valid @PathVariable Integer id, @RequestBody Endereco newEndereco) {
 		return enderecoService.updateEndereco(id, newEndereco);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteEndereco(@PathVariable Integer id) {
+	public void deleteEndereco(@Valid @PathVariable Integer id) {
 		enderecoService.deleteEndereco(id);
 	}
 }

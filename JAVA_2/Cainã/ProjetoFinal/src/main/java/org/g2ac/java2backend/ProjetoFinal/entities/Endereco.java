@@ -9,35 +9,35 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table (name = "Endereco")
+@Table(name = "Endereco")
 public class Endereco {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idEndereco;
 	
 	@NotNull
-	@Column (name = "rua", nullable = false, length = 40)
+	@Column(name = "rua", nullable = false, length = 40)
 	private String rua;
 	
 	@NotNull
-	@Column (name = "numero", nullable = false, length = 15)
+	@Column(name = "numero", nullable = false, length = 15)
 	private String numero;
 	
 	@NotNull
-	@Column (name = "bairro", nullable = false, length = 30)
+	@Column(name = "bairro", nullable = false, length = 30)
 	private String bairro;
 	
 	@NotNull
-	@Column (name = "cidade", nullable = false, length = 40)
+	@Column(name = "cidade", nullable = false, length = 40)
 	private String cidade;
 	
 	@NotNull
-	@Column (name = "estado", nullable = false, length = 2)
+	@Column(name = "estado", nullable = false, length = 2)
 	private String estado;
 	
 	@NotNull
-	@Column (name = "cep", nullable = false, length = 9)
+	@Column(name = "cep", nullable = false, length = 9)
 	private String cep;
 	
 	public Integer getIdEndereco() {

@@ -9,18 +9,18 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table (name = "Categoria")
+@Table(name = "Categoria")
 public class Categoria {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCategoria;
 	
 	@NotNull
-	@Column (name = "nome", nullable = false, length = 30)
+	@Column(name = "nome", nullable = false, length = 30)
 	private String nome;
 	
-	@Column (name = "descricao", length = 150)
+	@Column(name = "descricao", length = 150)
 	private String descricao;
 	
 	public Integer getIdCategoria() {
