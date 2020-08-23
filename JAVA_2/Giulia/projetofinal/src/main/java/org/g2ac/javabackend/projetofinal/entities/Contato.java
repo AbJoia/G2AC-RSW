@@ -1,11 +1,38 @@
 package org.g2ac.javabackend.projetofinal.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "Contato")
 public class Contato {
 
-	private Integer contatoID; 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer contatoID;
+	
+	@NotNull
+	@Column(name = "DDD", nullable = false, length = 2)
 	private String ddd; 
+	
+	@Size(min = 8)
+	@Column(name = "Fixo", nullable = true, unique = true, length = 8)
 	private String fixo; 
+	
+	@Size(min = 9)
+	@Column(name = "Movel", nullable = true, unique = true, length = 9)
 	private String celular; 
+	
+	@ManyToOne
+	@JoinColumn(name = "fkUsuarioID", nullable = false, referencedColumnName = "usuarioID")
 	private Usuario fkUsuario;
 	
 	public Integer getIdentificador() {
