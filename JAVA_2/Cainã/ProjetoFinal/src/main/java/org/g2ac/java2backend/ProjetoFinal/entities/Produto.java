@@ -2,18 +2,54 @@ package org.g2ac.java2backend.ProjetoFinal.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Produto {
 
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer idProduto;
+	
+	@NotNull
+	@Temporal (TemporalType.DATE)
+	@JsonFormat (pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
 	private Date dataFabricacao;
+	
+	@NotNull
+	@Column (name = "valorUnidade", nullable = false)
 	private Double valorUnidade;
+	
+	@NotNull
+	@Column (name = "quantidadeEstoque", nullable = false)
 	private Integer quantidadeEstoque;
+	
+	@Column (name = "descricao", length = 150)
 	private String descricao;
+	
+	@NotNull
+	@Column (name = "nome", nullable = false, length = 30)
 	private String nome;
+	
+	@NotNull
+	@ManyToOne ()
+	@JoinColumn (name = "usuarioVendedor", referencedColumnName = "idUsuario")
 	private Usuario usuarioVendedor;
+	
+	@NotNull
+	@ManyToOne ()
+	@JoinColumn (name = "categoria", referencedColumnName = "idCategoria")
 	private Categoria categoria;
 	
 	public Integer getIdProduto() {
