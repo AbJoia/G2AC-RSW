@@ -2,7 +2,10 @@ package org.g2ac.javabackend.projetofinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.javabackend.projetofinal.entities.Categoria;
+import org.g2ac.javabackend.projetofinal.exceptions.ObjectNotFoundException;
 import org.g2ac.javabackend.projetofinal.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,23 +30,22 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/{id}")
-	public Categoria especificoID(@PathVariable Integer id) {
+	public Categoria especificoID(@PathVariable Integer id) throws ObjectNotFoundException {
 		return caService.buscarPorID(id);
 	}
 	
 	@PostMapping
-	public Categoria add(@RequestBody Categoria corpo) {
+	public Categoria add(@Valid @RequestBody Categoria corpo) {
 		return caService.adicionar(corpo);
 	}
 	
 	@PutMapping("/{id}")
-	public Categoria update(@PathVariable Integer id, @RequestBody Categoria novo) {
+	public Categoria update(@PathVariable Integer id, @Valid @RequestBody Categoria novo) throws ObjectNotFoundException {
 		return caService.atualizar(id, novo);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable Integer id) throws ObjectNotFoundException {
 		caService.deletar(id);
 	}
-	
 }

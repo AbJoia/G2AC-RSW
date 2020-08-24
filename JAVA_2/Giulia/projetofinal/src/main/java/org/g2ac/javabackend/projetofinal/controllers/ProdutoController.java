@@ -2,7 +2,10 @@ package org.g2ac.javabackend.projetofinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.javabackend.projetofinal.entities.Produto;
+import org.g2ac.javabackend.projetofinal.exceptions.ObjectNotFoundException;
 import org.g2ac.javabackend.projetofinal.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,22 +30,22 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/{id}")
-	public Produto especificoID(@PathVariable Integer id) {
+	public Produto especificoID(@PathVariable Integer id) throws ObjectNotFoundException {
 		return pdService.buscarPorID(id);
 	}
 	
 	@PostMapping
-	public Produto add(@RequestBody Produto corpo) {
+	public Produto add(@Valid @RequestBody Produto corpo) {
 		return pdService.adicionar(corpo);
 	}
 	
 	@PutMapping("/{id}")
-	public Produto update(@PathVariable Integer id, @RequestBody Produto novo) {
+	public Produto update(@PathVariable Integer id, @Valid @RequestBody Produto novo) throws ObjectNotFoundException {
 		return pdService.atualizar(id, novo);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable Integer id) throws ObjectNotFoundException {
 		pdService.deletar(id);
 	}
 }

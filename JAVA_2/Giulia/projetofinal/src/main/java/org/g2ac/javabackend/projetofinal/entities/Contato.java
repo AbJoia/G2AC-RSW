@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,39 +28,36 @@ public class Contato {
 	@Size(min = 9)
 	@Column(name = "Movel", nullable = true, unique = true, length = 9)
 	private String celular; 
-	
-	@ManyToOne
-	@JoinColumn(name = "fkUsuarioID", nullable = false, referencedColumnName = "usuarioID")
-	private Usuario fkUsuario;
-	
-	public Integer getIdentificador() {
+
+	public Integer getContatoID() {
 		return contatoID;
 	}
-	public void setIdentificador(Integer identificador) {
+
+	public void setContatoID(Integer identificador) {
 		this.contatoID = identificador;
 	}
+
 	public String getDdd() {
 		return ddd;
 	}
+
 	public void setDdd(String ddd) {
 		this.ddd = ddd;
 	}
+
 	public String getFixo() {
 		return fixo;
 	}
+
 	public void setFixo(String fixo) {
 		this.fixo = fixo;
 	}
+
 	public String getCelular() {
 		return celular;
 	}
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	public Usuario getFkID() {
-		return fkUsuario;
-	}
-	public void setFkID(Usuario fkID) {
-		this.fkUsuario = fkID;
-	} 
 }

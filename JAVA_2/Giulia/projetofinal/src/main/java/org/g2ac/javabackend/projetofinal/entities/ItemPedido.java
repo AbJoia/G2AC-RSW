@@ -8,7 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "ItemPedido")
@@ -19,39 +21,48 @@ public class ItemPedido {
 	private Integer ItemPedidoID;
 	
 	@NotNull
-	@Column(name = "Quantidade", nullable = false)
+	@Size(min = 1)
+	@Column(name = "Quantidade", nullable = false, length = 10)
 	private Integer quantidade; 
+	
+	@NotNull
+	@Digits(integer = 99999999, fraction = 2)
+	@Column(name = "preco", nullable = false, length = 10)
+	private double preco;
 	
 	@ManyToOne
 	@JoinColumn(name = "fkProdutoID", nullable = false, referencedColumnName = "produtoID")
-	private Produto fkProdutoID; 
-	
-	@ManyToOne
-	@JoinColumn(name = "fkPedidoID", nullable = false, referencedColumnName = "pedidoID")
-	private Pedido fkPedidoID;
-	
+	private Produto fkProdutoID;
+
 	public Integer getItemPedidoID() {
 		return ItemPedidoID;
 	}
-	public void setItemPedidoID(Integer itemPedidoID) {
-		ItemPedidoID = itemPedidoID;
+
+	public void setItemPedidoID(Integer identificador) {
+		ItemPedidoID = identificador;
 	}
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}
+
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
 	public Produto getFkProdutoID() {
 		return fkProdutoID;
 	}
+
 	public void setFkProdutoID(Produto fkProdutoID) {
 		this.fkProdutoID = fkProdutoID;
-	}
-	public Pedido getFkPedidoID() {
-		return fkPedidoID;
-	}
-	public void setFkPedidoID(Pedido fkPedidoID) {
-		this.fkPedidoID = fkPedidoID;
-	}
+	} 
 }

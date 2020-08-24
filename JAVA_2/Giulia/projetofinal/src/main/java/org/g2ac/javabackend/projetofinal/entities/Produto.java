@@ -13,7 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "Produto")
@@ -24,8 +27,10 @@ public class Produto {
 	private Integer produtoID; 
 	
 	@NotNull
+	@Past
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Fabricado", nullable = false)
+	@JsonFormat(timezone = "America/Sao_Paulo")
 	private Date fabricacao; 
 	
 	@NotNull
@@ -46,7 +51,7 @@ public class Produto {
 	private String descricao; 
 	
 	@ManyToOne
-	@JoinColumn(name = "fkUsuarioID", nullable = false, referencedColumnName = "usuarioID")
+	@JoinColumn(name = "vVendedorID", nullable = false, referencedColumnName = "usuarioID")
 	private Usuario uVendedorFK; 
 	
 	@ManyToOne
@@ -56,8 +61,8 @@ public class Produto {
 	public Integer getProdutoID() {
 		return produtoID;
 	}
-	public void setProdutoID(Integer produtoID) {
-		this.produtoID = produtoID;
+	public void setProdutoID(Integer identificador) {
+		this.produtoID = identificador;
 	}
 	public Date getFabricacao() {
 		return fabricacao;
@@ -92,8 +97,8 @@ public class Produto {
 	public Usuario getFkUsuario() {
 		return uVendedorFK;
 	}
-	public void setFkUsuario(Usuario fkUsuario) {
-		this.uVendedorFK = fkUsuario;
+	public void setFkUsuario(Usuario uVendedor) {
+		this.uVendedorFK = uVendedor;
 	}
 	public Categoria getFkCategoria() {
 		return fkCategoria;
