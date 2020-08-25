@@ -2,6 +2,7 @@ package org.g2ac.backend.ProjetoFinal.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -25,22 +29,23 @@ public class Usuario {
 	private Integer id_usuario;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 3, max = 50)
 	@Column(name = "nome", nullable = false, length = 50)
 	private String nome;
 
 	@NotNull
-	@Size(min = 11)
+	@Size(min = 11, max = 11)
 	@Column(name = "cpf", nullable = false, length = 11)
 	private String cpf;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 1, max = 50)
 	@Column(name = "nome_usuario", unique = true, nullable = false, length = 50)
 	private String nome_usuario;
 
 	@NotNull
-	@Size(min = 8, max = 50)
+	@Email
+	@Size(min = 1, max = 50)
 	@Column(name = "email", nullable = false, length = 50)
 	private String email;
 
@@ -49,11 +54,18 @@ public class Usuario {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_nascimento", nullable = false)
 	private Date data_nascimento;
-
-	@ManyToOne
+	
+	@Valid
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_IdEndereco", referencedColumnName = "id_endereco")
 	private Endereco endereco;
-
+	
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Contato")
+	private Contato contato;
+	
+	
 	public Integer getId_usuario() {
 		return id_usuario;
 	}
@@ -108,6 +120,14 @@ public class Usuario {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 
 }

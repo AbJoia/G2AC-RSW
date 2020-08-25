@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.g2ac.backend.ProjetoFinal.entity.Produto;
+import org.g2ac.backend.ProjetoFinal.exceptions.DataNotFoundException;
 import org.g2ac.backend.ProjetoFinal.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,17 +34,17 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/{id}")
-	public Produto buscarUniProduto(@PathVariable Integer id) {
+	public Produto buscarUniProduto(@PathVariable Integer id) throws DataNotFoundException{
 		return produtoService.buscarUniProduto(id);
 	}
 
 	@PutMapping("/{id}")
-	public Produto alterarProduto(@PathVariable Integer id, @RequestBody Produto altProduto) {
+	public Produto alterarProduto(@Valid @PathVariable Integer id, @RequestBody Produto altProduto)throws DataNotFoundException {
 		return produtoService.alterarProduto(id, altProduto);
 	}
 
 	@DeleteMapping("/{id}")
-	public Produto excluirProduto(@PathVariable Integer id) {
+	public Produto excluirProduto(@PathVariable Integer id)throws DataNotFoundException{
 		return produtoService.excluirProduto(id);
 	}
 

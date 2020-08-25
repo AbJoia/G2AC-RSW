@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.g2ac.backend.ProjetoFinal.entity.Pedido;
+import org.g2ac.backend.ProjetoFinal.exceptions.DataNotFoundException;
 import org.g2ac.backend.ProjetoFinal.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,17 +35,17 @@ public class PedidoController {
 	}
 
 	@GetMapping("/{id}")
-	public Pedido buscarUniPedido(@PathVariable Integer id) {
+	public Pedido buscarUniPedido(@PathVariable Integer id)throws DataNotFoundException{
 		return pedidoService.buscarUniPedido(id);
 	}
 
 	@PutMapping("/{id}")
-	public Pedido alterarPedido(@PathVariable Integer id, @RequestBody Pedido altPedido) {
+	public Pedido alterarPedido(@Valid @PathVariable Integer id, @RequestBody Pedido altPedido)throws DataNotFoundException {
 		return pedidoService.alterarPedido(id, altPedido);
 	}
 
 	@DeleteMapping("/{id}")
-	public Pedido excluirPedido(@PathVariable Integer id) {
+	public Pedido excluirPedido(@PathVariable Integer id)throws DataNotFoundException {
 		return pedidoService.excluirPedido(id);
 	}
 

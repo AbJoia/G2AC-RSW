@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.g2ac.backend.ProjetoFinal.entity.Categoria;
+import org.g2ac.backend.ProjetoFinal.exceptions.DataNotFoundException;
 import org.g2ac.backend.ProjetoFinal.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,22 +30,22 @@ public class CategoriaController {
 	}
 
 	@GetMapping
-	public List<Categoria> buscarCategoria(@RequestParam String campo) {
-		return categoriaService.buscarCategoria(campo);
+	public List<Categoria> buscarCategoria(){
+		return categoriaService.buscarCategoria();
 	}
 
 	@GetMapping("/{id}")
-	public Categoria buscarUniCategoria(@PathVariable Integer id) {
+	public Categoria buscarUniCategoria(@PathVariable Integer id) throws DataNotFoundException {
 		return categoriaService.buscarUniCategoria(id);
 	}
 
 	@PutMapping("/{id}")
-	public Categoria alterarCategoria(@PathVariable Integer id, @RequestBody Categoria altCategoria) {
+	public Categoria alterarCategoria(@Valid @PathVariable Integer id, @RequestBody Categoria altCategoria) throws DataNotFoundException {
 		return categoriaService.alterarCategoria(id, altCategoria);
 	}
 
 	@DeleteMapping("/{id}")
-	public Categoria excluirCategoria(@PathVariable Integer id) {
+	public Categoria excluirCategoria(@PathVariable Integer id) throws DataNotFoundException{
 		return categoriaService.excluirCategoria(id);
 	}
 

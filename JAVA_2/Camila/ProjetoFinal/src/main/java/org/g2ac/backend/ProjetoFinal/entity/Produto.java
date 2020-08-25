@@ -34,7 +34,6 @@ public class Produto {
 	private String descricao;
 
 	@NotNull
-	@Size(min = 1)
 	@Column(name = "quantidade_estoque", nullable = false)
 	private Integer quantidade_estoque;
 
@@ -47,11 +46,11 @@ public class Produto {
 	@Column(name = "data_fabricacao", nullable = false)
 	private Date data_fabricacao;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "FK_IdUsuario", referencedColumnName = "id_usuario")
 	private Usuario usuario;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "FK_IdCategoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;
 

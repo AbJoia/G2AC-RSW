@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -21,22 +19,18 @@ public class Contato {
 	private Integer id_contato;
 
 	@NotNull
-	@Size(min = 2)
+	@Size(min = 2, max = 2)
 	@Column(name = "ddd", nullable = false, length = 2)
 	private String ddd;
 
 	@NotNull
-	@Size(min = 10)
-	@Column(name = "movel", nullable = false, length = 10)
+	@Size(min = 9, max = 9)
+	@Column(name = "movel", nullable = false, length = 9)
 	private String movel;
 
 	@Size(min = 2)
 	@Column(name = "fixo", nullable = false, length = 10)
 	private String fixo;
-
-	@ManyToOne
-	@JoinColumn(name = "FK_IdUsuario", referencedColumnName = "id_usuario")
-	private Usuario usuario;
 
 	public Integer getId_contato() {
 		return id_contato;
@@ -70,12 +64,5 @@ public class Contato {
 		this.movel = movel;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 
 }

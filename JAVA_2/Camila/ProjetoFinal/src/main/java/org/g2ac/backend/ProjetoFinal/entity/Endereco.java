@@ -19,12 +19,12 @@ public class Endereco {
 	private Integer id_endereco;
 
 	@NotNull
-	@Size(min = 8)
-	@Column(name = "cep", nullable = false, length = 8)
+	@Size(min = 9, max = 9)
+	@Column(name = "cep", nullable = false, length = 9)
 	private String cep;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 2, max = 50)
 	@Column(name = "rua", nullable = false, length = 50)
 	private String rua;
 
@@ -44,8 +44,8 @@ public class Endereco {
 	private String cidade;
 
 	@NotNull
-	@Size(min = 3, max = 25)
-	@Column(name = "estado", nullable = false, length = 25)
+	@Size(min = 2, max = 2)
+	@Column(name = "estado", nullable = false, length = 2)
 	private String estado;
 
 	public Integer getId_endereco() {
