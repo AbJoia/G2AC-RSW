@@ -20,7 +20,7 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idProduto;
+	private Integer id;
 	
 	@NotNull
 	@Temporal(TemporalType.DATE)
@@ -44,20 +44,20 @@ public class Produto {
 	
 	@NotNull
 	@ManyToOne()
-	@JoinColumn(name = "usuarioVendedor", referencedColumnName = "idUsuario")
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
 	private Usuario usuarioVendedor;
 	
 	@NotNull
 	@ManyToOne()
-	@JoinColumn(name = "categoria", referencedColumnName = "idCategoria")
+	@JoinColumn(name = "id_categoria", referencedColumnName = "id")
 	private Categoria categoria;
 	
 	public Integer getIdProduto() {
-		return idProduto;
+		return id;
 	}
 	
-	public void setIdProduto(Integer idProduto) {
-		this.idProduto = idProduto;
+	public void setIdProduto(Integer id) {
+		this.id = id;
 	}
 	
 	public Date getDataFabricacao() {

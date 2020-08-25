@@ -2,6 +2,7 @@ package org.g2ac.java2backend.ProjetoFinal.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,14 +25,14 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idUsuario;
+	private Integer id;
 	
 	@NotNull
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
 	@NotNull
-	@Size(min = 11)
+	@Size(min = 11, max = 11)
 	@Column(name = "cpf", nullable = false, unique = true, length = 11)
 	private String cpf;
 	
@@ -50,16 +51,28 @@ public class Usuario {
 	private Date dataNascimento;
 	
 	@NotNull
-	@ManyToOne()
-	@JoinColumn(name = "endereco", referencedColumnName = "idEndereco")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_endereco", referencedColumnName = "id")
 	private Endereco endereco;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_contato", referencedColumnName = "id")
+	private Contato contato;
+	
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
 	public Integer getIdUsuario() {
-		return idUsuario;
+		return id;
 	}
 	
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdUsuario(Integer id) {
+		this.id= id;
 	}
 	
 	public String getNome() {

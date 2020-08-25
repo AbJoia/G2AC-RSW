@@ -14,7 +14,7 @@ public class Endereco {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idEndereco;
+	private Integer id;
 	
 	@NotNull
 	@Column(name = "rua", nullable = false, length = 40)
@@ -41,11 +41,11 @@ public class Endereco {
 	private String cep;
 	
 	public Integer getIdEndereco() {
-		return idEndereco;
+		return id;
 	}
 	
-	public void setIdEndereco(Integer idEndereco) {
-		this.idEndereco = idEndereco;
+	public void setIdEndereco(Integer id) {
+		this.id = id;
 	}
 	
 	public String getRua() {

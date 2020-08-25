@@ -14,7 +14,7 @@ public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idCategoria;
+	private Integer id;
 	
 	@NotNull
 	@Column(name = "nome", nullable = false, length = 30)
@@ -24,11 +24,11 @@ public class Categoria {
 	private String descricao;
 	
 	public Integer getIdCategoria() {
-		return idCategoria;
+		return id;
 	}
 	
-	public void setIdCategoria(Integer idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setIdCategoria(Integer id) {
+		this.id = id;
 	}
 	
 	public String getNome() {
