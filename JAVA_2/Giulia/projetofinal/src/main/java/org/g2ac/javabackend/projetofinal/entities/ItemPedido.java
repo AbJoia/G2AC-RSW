@@ -8,9 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "ItemPedido")
@@ -21,14 +19,8 @@ public class ItemPedido {
 	private Integer ItemPedidoID;
 	
 	@NotNull
-	@Size(min = 1)
 	@Column(name = "Quantidade", nullable = false, length = 10)
 	private Integer quantidade; 
-	
-	@NotNull
-	@Digits(integer = 99999999, fraction = 2)
-	@Column(name = "preco", nullable = false, length = 10)
-	private double preco;
 	
 	@ManyToOne
 	@JoinColumn(name = "fkProdutoID", nullable = false, referencedColumnName = "produtoID")
@@ -48,14 +40,6 @@ public class ItemPedido {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
 	}
 
 	public Produto getFkProdutoID() {

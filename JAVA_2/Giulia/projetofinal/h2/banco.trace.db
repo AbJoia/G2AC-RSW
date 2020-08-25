@@ -729,3 +729,12 @@ insert into endereco (enderecoid, bairro, cep, cidade, estado, numero, rua) valu
 2020-08-24 20:02:38 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "ESTADO VARCHAR(2)": "'RJW' (3)"; SQL statement:
 insert into endereco (enderecoid, bairro, cep, cidade, estado, numero, rua) values (null, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-08-24 21:04:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ESTADO VARCHAR(2)": "'RJw' (3)"; SQL statement:
+insert into endereco (enderecoid, bairro, cep, cidade, estado, numero, rua) values (null, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-08-24 21:06:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ESTADO VARCHAR(2)": "'RJw' (3)"; SQL statement:
+insert into endereco (enderecoid, bairro, cep, cidade, estado, numero, rua) values (null, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-08-24 21:12:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ESTADO VARCHAR(2)": "'RJ2' (3)"; SQL statement:
+insert into endereco (enderecoid, bairro, cep, cidade, estado, numero, rua) values (null, ?, ?, ?, ?, ?, ?) [22001-200]
