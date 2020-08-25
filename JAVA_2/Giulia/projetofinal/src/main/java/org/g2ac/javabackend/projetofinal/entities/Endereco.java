@@ -18,7 +18,7 @@ public class Endereco {
 	private Integer enderecoID; 
 	
 	@NotNull
-	@Size(min = 10, max = 40) 
+	@Size(min = 5, max = 40) 
 	@Column(name = "Rua", nullable = false, length = 40)
 	private String rua; 
 	
@@ -42,6 +42,7 @@ public class Endereco {
 	private String estado;
 	
 	@NotNull
+	@Size(max = 8)
 	@Column(name = "Cep", nullable = false, length = 8)
 	private String cep;
 	
