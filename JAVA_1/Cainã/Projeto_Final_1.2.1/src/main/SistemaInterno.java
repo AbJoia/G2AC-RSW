@@ -11,6 +11,7 @@ import modelo.usuario.*;
 public class SistemaInterno {
 
 	public static void main(String[] args) {
+		
 		Map<String, Cliente> mapaCliente = null;
 		Map<Integer, Agencia> mapaAgencia = null;
 		Map<String, Funcionario> mapaFuncionario = null;
