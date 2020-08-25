@@ -2,7 +2,10 @@ package org.g2ac.java2backend.ProjetoFinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.java2backend.ProjetoFinal.entities.Pedido;
+import org.g2ac.java2backend.ProjetoFinal.exceptions.IdInvalidoException;
 import org.g2ac.java2backend.ProjetoFinal.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,22 +30,22 @@ public class PedidoController {
 	}
 
 	@GetMapping("/{id}")
-	public Pedido getPedido(@PathVariable Integer id) {
+	public Pedido getPedido(@PathVariable Integer id) throws IdInvalidoException {
 		return pedidoService.getPedido(id);
 	}
 
 	@PostMapping
-	public void insertPedido(@RequestBody Pedido pedido) {
+	public void insertPedido(@Valid @RequestBody Pedido pedido) {
 		pedidoService.insertPedido(pedido);
 	}
 	
 	@PutMapping("/{id}")
-	public Pedido updatePedido(@PathVariable Integer id, @RequestBody Pedido newPedido) {
+	public Pedido updatePedido(@Valid @PathVariable Integer id, @RequestBody Pedido newPedido) throws IdInvalidoException {
 		return pedidoService.updatePedido(id, newPedido);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deletePedido(@PathVariable Integer id) {
+	public void deletePedido(@Valid @PathVariable Integer id) throws IdInvalidoException {
 		pedidoService.deletePedido(id);
 	}
 }

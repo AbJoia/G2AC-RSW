@@ -19,39 +19,34 @@ public class ItemPedido {
 	private Integer ItemPedidoID;
 	
 	@NotNull
-	@Column(name = "Quantidade", nullable = false)
+	@Column(name = "Quantidade", nullable = false, length = 10)
 	private Integer quantidade; 
 	
 	@ManyToOne
 	@JoinColumn(name = "fkProdutoID", nullable = false, referencedColumnName = "produtoID")
-	private Produto fkProdutoID; 
-	
-	@ManyToOne
-	@JoinColumn(name = "fkPedidoID", nullable = false, referencedColumnName = "pedidoID")
-	private Pedido fkPedidoID;
-	
+	private Produto fkProdutoID;
+
 	public Integer getItemPedidoID() {
 		return ItemPedidoID;
 	}
-	public void setItemPedidoID(Integer itemPedidoID) {
-		ItemPedidoID = itemPedidoID;
+
+	public void setItemPedidoID(Integer identificador) {
+		ItemPedidoID = identificador;
 	}
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}
+
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+
 	public Produto getFkProdutoID() {
 		return fkProdutoID;
 	}
+
 	public void setFkProdutoID(Produto fkProdutoID) {
 		this.fkProdutoID = fkProdutoID;
-	}
-	public Pedido getFkPedidoID() {
-		return fkPedidoID;
-	}
-	public void setFkPedidoID(Pedido fkPedidoID) {
-		this.fkPedidoID = fkPedidoID;
-	}
+	} 
 }

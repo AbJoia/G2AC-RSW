@@ -1,10 +1,10 @@
 package org.g2ac.javabackend.projetofinal.exceptions;
 
-public class DadosNotFoundException extends Exception{
+public class ObjectNotFoundException extends Exception{
 
 	private Integer id;
 
-	public DadosNotFoundException(Integer id) {
+	public ObjectNotFoundException(Integer id) {
 		super();
 		this.id = id;
 	}

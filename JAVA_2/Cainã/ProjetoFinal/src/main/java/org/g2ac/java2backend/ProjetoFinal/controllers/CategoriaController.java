@@ -2,7 +2,10 @@ package org.g2ac.java2backend.ProjetoFinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.java2backend.ProjetoFinal.entities.Categoria;
+import org.g2ac.java2backend.ProjetoFinal.exceptions.IdInvalidoException;
 import org.g2ac.java2backend.ProjetoFinal.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,22 +30,22 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/{id}")
-	public Categoria getCategoria(@PathVariable Integer id) {
+	public Categoria getCategoria(@PathVariable Integer id) throws IdInvalidoException {
 		return categoriaService.getCategoria(id);
 	}
 	
 	@PostMapping
-	public void insertCategoria(@RequestBody Categoria categoria) {
+	public void insertCategoria(@Valid @RequestBody Categoria categoria) {
 		categoriaService.insertCategoria(categoria);
 	}
 	
 	@PutMapping("/{id}")
-	public Categoria updateCategoria(@PathVariable Integer id, @RequestBody Categoria newCategoria) {
+	public Categoria updateCategoria(@Valid @PathVariable Integer id, @RequestBody Categoria newCategoria) throws IdInvalidoException {
 		return categoriaService.updateCategoria(id, newCategoria);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteCategoria(@PathVariable Integer id) {
+	public void deleteCategoria(@Valid @PathVariable Integer id) throws IdInvalidoException {
 		categoriaService.deleteCategoria(id);
 	}
 }

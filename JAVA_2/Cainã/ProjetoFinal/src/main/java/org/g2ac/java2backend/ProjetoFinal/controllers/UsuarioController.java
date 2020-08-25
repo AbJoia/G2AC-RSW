@@ -2,7 +2,10 @@ package org.g2ac.java2backend.ProjetoFinal.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.g2ac.java2backend.ProjetoFinal.entities.Usuario;
+import org.g2ac.java2backend.ProjetoFinal.exceptions.IdInvalidoException;
 import org.g2ac.java2backend.ProjetoFinal.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,22 +30,22 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/{id}")
-	public Usuario getUsuario(@PathVariable Integer id) {
+	public Usuario getUsuario(@PathVariable Integer id) throws IdInvalidoException {
 		return usuarioService.getUsuario(id);
 	}
 	
 	@PostMapping
-	public void insertUsuario(@RequestBody Usuario usuario) {
+	public void insertUsuario(@Valid @RequestBody Usuario usuario) {
 		usuarioService.insertUsuario(usuario);
 	}
 	
 	@PutMapping("/{id}")
-	public Usuario updateUsuario(@PathVariable Integer id, @RequestBody Usuario newUsuario) {
+	public Usuario updateUsuario(@Valid @PathVariable Integer id, @RequestBody Usuario newUsuario) throws IdInvalidoException {
 		return usuarioService.updateUsuario(id, newUsuario);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteUsuario(@PathVariable Integer id) {
+	public void deleteUsuario(@Valid @PathVariable Integer id) throws IdInvalidoException {
 		usuarioService.deleteUsuario(id);
 	}
 }

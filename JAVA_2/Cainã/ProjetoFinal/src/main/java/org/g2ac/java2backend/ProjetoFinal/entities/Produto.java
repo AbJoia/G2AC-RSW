@@ -19,45 +19,45 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Produto {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Integer idProduto;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
 	@NotNull
-	@Temporal (TemporalType.DATE)
-	@JsonFormat (pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/Sao_Paulo")
 	private Date dataFabricacao;
 	
 	@NotNull
-	@Column (name = "valorUnidade", nullable = false)
+	@Column(name = "valorUnidade", nullable = false)
 	private Double valorUnidade;
 	
 	@NotNull
-	@Column (name = "quantidadeEstoque", nullable = false)
+	@Column(name = "quantidadeEstoque", nullable = false)
 	private Integer quantidadeEstoque;
 	
-	@Column (name = "descricao", length = 150)
+	@Column(name = "descricao", length = 150)
 	private String descricao;
 	
 	@NotNull
-	@Column (name = "nome", nullable = false, length = 30)
+	@Column(name = "nome", nullable = false, length = 30)
 	private String nome;
 	
 	@NotNull
-	@ManyToOne ()
-	@JoinColumn (name = "usuarioVendedor", referencedColumnName = "idUsuario")
+	@ManyToOne()
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
 	private Usuario usuarioVendedor;
 	
 	@NotNull
-	@ManyToOne ()
-	@JoinColumn (name = "categoria", referencedColumnName = "idCategoria")
+	@ManyToOne()
+	@JoinColumn(name = "id_categoria", referencedColumnName = "id")
 	private Categoria categoria;
 	
 	public Integer getIdProduto() {
-		return idProduto;
+		return id;
 	}
 	
-	public void setIdProduto(Integer idProduto) {
-		this.idProduto = idProduto;
+	public void setIdProduto(Integer id) {
+		this.id = id;
 	}
 	
 	public Date getDataFabricacao() {
