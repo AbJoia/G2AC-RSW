@@ -1,0 +1,78 @@
+/* Configurações Gerais */
+:root{
+  --cor-fundo: #fefdff;
+  --cor-primaria: #8eb1c7;
+  --cor-secundaria: #50723c;
+  --cor-texto: #414066;
+  --cor-destaque: #e6af2e;
+}
+
+/*Carrosel Slide*/
+
+#carouselExampleCaptions{
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+#carouselExampleCaptions .carousel-inner{
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#carouselExampleCaptions .carousel-inner:before{
+  background: rgba(0, 0, 0, 0.45);
+  content: '';
+  height: 100%;
+  position: absolute;
+ 
+  /**/
+  top: 0;
+  left: 0;  
+  width: 100%;
+  z-index: 1;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-item {
+  background: url('../img/willian-justen-de-vasconcellos-2rB5CLgSN0c-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+
+  /* ----- */
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-item:nth-child(2) {
+  background: url('../img/carlos-de-almeida-f0_PcmpxnW4-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-item:nth-child(3){
+  background: url('../img/mauro-lima-r3bRZWtV-oM-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Eventos */
+
+.title {
+  text-align: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.row {
+  justify-content: center;
+}
+
+.card {
+  margin: .75rem 1rem .75rem 1rem;
+}
+
+.card img {
+  height: 180px;
+}
+
