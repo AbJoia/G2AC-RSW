@@ -60,36 +60,54 @@
 /* Rodapé */
 
 .logos img {
-  height: 90px;
+  height: 6.875rem;
   padding: 1rem;
   width: auto;
 }
 
-.col-sm-4 ul {
-  margin-left: 20px;
-  margin-top: 20px;
+.logos {
+  /* position: absolute; */
+  right: 1.875rem;
+}
+
+.logos li {
+  display: inline;
+}
+
+/* .col-sm-6 ul {
+  margin-left: 1.25rem;
+  margin-top: 1.25rem;
   list-style: none;
+} */
+
+.empresas ul {
+  margin-right: 1.25rem;
+  margin-top: 1.25rem;
+  list-style: none;
+  display: inline;
 }
 
 .listas-sociais {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
-.col-sm-4 {
-  justify-content: center;
+.sociais ul {
+  /* margin-left: 1.25rem; */
+  margin-top: 1.25rem;
+  list-style: none;
 }
 
-.col-sm-4 h3 {
-  margin-left: 19px;
-}
+/* .sociais h3 {
+  margin-left: 1.188rem;
+} */
 
-.parceiros {
-  display: flex;
-}
+/* .empresas {
+  margin-left: 0.938rem;
+} */
 
-.sociais {
+/* .sociais {
   padding-left: 70px;
-}
+} */
 
 .listas-sociais a,
 .parceiros a {
