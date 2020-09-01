@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+header {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    overflow: hidden; /*?*/
+}
+
+.menu ul li a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    margin-left: 14px;
+    text-decoration: none;
+    color: rgb(59, 59, 59);
+}
+
+.menu ul li {
+    float: left;
+}
+
+.texto {
+    font-family: Alata;
+    color: grey;
+}
+
+#sacola {
+    background-image: url(img/sacola.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    font-size: 14px;
+    padding-right: 35px;
+    text-align: right;
+    width: 140px;
+    position: absolute;
+    top: 0;
+    right: 65px;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 940px;
+    margin-left: 182px;
+}
+
+#centro-distribuicao {
+    text-align: center;
+    background-color: #ececec;
+    border: #a3a3a3 groove 5px;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 580px;
+}
+
+#familia-pelho {
+    text-align: center;
+    background-color: #ececec;
+    border: #a3a3a3 groove 5px;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 330px;
+    float: right;
+    margin: 0 0 10px 20px;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.titulosobre {
+    padding: 20px;
+    text-align: center;
+    color: rgb(70, 70, 70);
+    background-image: url(img/sobre-background.jpg);
+    font-family: Poppins;
+    font-size: 40px;
+    border-top: 4px solid rgb(36, 36, 36);
+}
+
+.diferenciais {
+    padding-top: 20px;
+    text-align: center;
+    border-top: 2px solid #888888;
+    font-family: 'Julius Sans One';
+    font-size: 35px;
+}
+
+.historia {
+    padding-top: 20px;
+    text-align: center;
+    border-top: 2px solid #888888;
+    font-family: Tangerine;
+    font-size: 60px;
+}
+
+.sobre {
+    color: #333333;
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    text-indent: 15px;
+}
+
+.listadif {
+    text-align: left;
+    margin-bottom: 8px;
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    margin-bottom: 70px;
+}
+    
+
+#rodape {
+    color: #777;
+    margin: 30px 0;
+    padding: 30px 0;
+}
+
+#rodape img {
+    margin-right: 25px;
+    vertical-align: middle;
+    width: 120px;
+}
