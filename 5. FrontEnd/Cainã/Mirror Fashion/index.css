@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+header {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 924px;
+}
+
+.menu {
+    margin-bottom: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    overflow: hidden; /*?*/
+}
+
+.menu ul li a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    margin-left: 14px;
+    text-decoration: none;
+    color: rgb(59, 59, 59);
+}
+
+.menu ul li {
+    float: left;
+}
+
+.texto {
+    font-family: Alata;
+    color: grey;
+}
+
+#sacola {
+    background-image: url(img/sacola.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    font-size: 14px;
+    padding-right: 35px;
+    text-align: right;
+    width: 140px;
+    position: absolute;
+    top: 0;
+    right: 49px;
+}
+
+.menu nav ul li a {
+    color: rgb(59, 59, 59);
+}
+
+.busca {
+    padding-bottom: 1px;
+}
+
+.busca,
+.menu-departamentos {
+    background-color: rgb(214, 214, 214);
+    font-weight: bold;
+    font-family: Alata;
+    text-transform: uppercase;
+    margin-right: 10px;
+    width: 230px;
+    float: left;
+
+}
+
+.busca h2,
+.busca form,
+.menu-departamentos {
+    margin: 10px;
+}
+
+.menu-departamentos {
+    clear: left;
+}
+
+.menu-departamentos ul {
+    padding-left: 0px;
+}
+
+.menu-departamentos li {
+    background-color: white;
+    margin-bottom: 1px;
+    padding: 5px 10px;
+    list-style-type: none;
+}
+
+.menu-departamentos a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.menu-departamentos h2 {
+    padding-left: 10px;
+}
+
+.busca input[type=search] {
+    width: 170px;
+}
+
+.busca {
+    margin-left: 10px;
+}
