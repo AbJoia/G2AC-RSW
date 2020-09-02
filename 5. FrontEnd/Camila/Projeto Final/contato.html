@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
-    <link rel="stylesheet" href="assets/css/contato.css">
 
     <!--Bootstrap CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/secundary.css">
+    <link rel="stylesheet" href="assets/css/contato.css">
+
     <!--Fonts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
+        <script src="assets/js/script.js"></script>
 </head>
 
 <body>
@@ -33,10 +37,10 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O que fazer?
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#eventos">Eventos</a>
-                            <a class="dropdown-item" href="#trilhas">Trilhas</a>
-                            <a class="dropdown-item" href="#gastronomia">Gastronomia</a>
-                            <a class="dropdown-item" href="#pontos-turisticos">Pontos Turísticos</a>
+                            <a class="dropdown-item" href="index.html#eventos">Eventos</a>
+                            <a class="dropdown-item" href="index.html#trilhas">Trilhas</a>
+                            <a class="dropdown-item" href="index.html#gastronomia">Gastronomia</a>
+                            <a class="dropdown-item" href="index.html#pontos-turisticos">Pontos Turísticos</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -51,55 +55,44 @@
                 </ul>
             </div>
         </nav>
-        <!--Fim Menu-->
-
     </header>
+    <!--Fim Menu-->
     <div class="fantasminha">
 
     </div>
-
+    <!--Div Fantasma-->
     <section>
         <div class="container">
             <h1 class="titulo">Contato</h1>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="container2">
-                            <div class="texto">
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam quisquam vero labore
-                                    deleniti ducimus veniam voluptas illo perferendis ex facilis, autem impedit ratione
-                                    maiores cumque omnis in unde aliquid quaerat!
-                                </p>
-                            </div>
+                        <div class="texto">
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam quisquam vero labore
+                                deleniti ducimus veniam voluptas illo perferendis ex facilis, autem impedit ratione
+                                maiores cumque omnis in unde aliquid quaerat!
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <form>
-                        <div class="form-row">
-                            <label>
-                                Nome
-                            </label>
-                            <input type="text" class="form-control" placeholder="Digite seu nome completo.">
-                            <label>
-                                E-mail
-                            </label>
-                            <input type="email" class="form-control" placeholder="Digite seu e-mail.">
-                            <label>
-                                Assunto
-                            </label>
-                            <input type="text" class="form-control" placeholder="Elogio e sugestão.">
-                            <label>
-                                Mensagem
-                            </label>
-                            <textarea class="form-control" rows="10" placeholder="Deixe sua mensagem aqui.">
-                            </textarea>
-                            <button class="btn btn-primary">
-                                Enviar
-                            </button>
-                        </div>
-                    </form>
+                    <div class="container">
+                        <form id="formulario" name="formulario" onsubmit="validarDados()" method="GET" >
+                            <div class="form-row">
+                                <label>Nome</label>
+                                <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite seu nome completo." required>
+                                <label>E-mail</label>
+                                <input type="email" name= "email" id="email" class="form-control" placeholder="Digite seu e-mail." required>
+                                <label>Assunto</label>
+                                <input type="text" name="assunto" id="assunto" class="form-control" placeholder="Elogio e/ou sugestão." required>
+                                <label>Mensagem</label>
+                                <textarea class="form-control" rows="10" name= "mensagem" id="mensagem"
+                                    placeholder="Deixe sua mensagem aqui." required></textarea>
+                                <button class="btn btn-primary" type="submit" value="Enviar">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
