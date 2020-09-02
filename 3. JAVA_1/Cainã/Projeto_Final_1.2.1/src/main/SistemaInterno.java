@@ -21,6 +21,13 @@ public class SistemaInterno {
 		Scanner sc = new Scanner(System.in);
 		CarregaArquivo importa = new CarregaArquivo();
 
+<<<<<<< HEAD:JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
+		Map<String, Cliente> mapaCliente = importa.importaCliente();
+		Map<Integer, Agencia> mapaAgencia = importa.importaAgencia();
+		Map<String, Funcionario> mapaFuncionario = importa.importaFuncionario();
+		Map<String, ContaCorrente> mapaContaCorrente = importa.importaContaCorrente();
+		Map<String, ContaPoupanca> mapaContaPoupanca = importa.importaContaPoupanca();
+=======
 		try {
 			mapaCliente = importa.importaCliente();
 			mapaAgencia = importa.importaAgencia();
@@ -31,6 +38,7 @@ public class SistemaInterno {
 		} catch (IOException e) {
 			System.out.println("Arquivo n�o localizado." + e);
 		}
+>>>>>>> 0633f60c3e82e64d64529e34cc1e28a25bfd4b62:3. JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
 
 		Usuario usuarioLogado = null;
 		Conta contaLogada = null;
@@ -43,22 +51,33 @@ public class SistemaInterno {
 			try {
 
 				Telas.telaLogin();
+<<<<<<< HEAD:JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
+				cpf = sc.next();
+=======
 				System.out.println();
 				System.out.print("CPF: ");
 				cpf = sc.next();
 				System.out.print("Senha: ");
+>>>>>>> 0633f60c3e82e64d64529e34cc1e28a25bfd4b62:3. JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
 				senha = sc.next();
 				usuarioLogado = verificaUsuario(mapaCliente, mapaFuncionario, cpf, senha);
 				contaLogada = buscaConta(mapaContaCorrente, mapaContaPoupanca, usuarioLogado);
 				ativo = true;
+<<<<<<< HEAD:JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
+=======
 				Telas.imprimeSaudacao(usuarioLogado);
 				
+>>>>>>> 0633f60c3e82e64d64529e34cc1e28a25bfd4b62:3. JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
 
 			} catch (Exception e) {
 				System.out.println("Dados Invalidos!" + e);
 
 			}
+<<<<<<< HEAD:JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
+		} while (!ativo);
+=======
 		} while (!ativo);		
+>>>>>>> 0633f60c3e82e64d64529e34cc1e28a25bfd4b62:3. JAVA_1/Cainã/Projeto_Final_1.2.1/src/main/SistemaInterno.java
 
 		do {
 			op = sc.nextInt();
