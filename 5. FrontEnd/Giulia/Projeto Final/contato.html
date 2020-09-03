@@ -17,7 +17,7 @@
     <!--Fonts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
+    <script src="/assets/js/script.js"></script>
 </head>
 
 <body>
@@ -77,18 +77,18 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="container">
-                        <form>
+                        <form name="formulario" method="GET" action="" onsubmit="validaForm()">
                             <div class="form-row">
-                                <label>Nome</label>
-                                <input type="text" class="form-control" placeholder="Digite seu nome completo.">
-                                <label>E-mail</label>
-                                <input type="email" class="form-control" placeholder="Digite seu e-mail.">
-                                <label>Assunto</label>
-                                <input type="text" class="form-control" placeholder="Elogio e sugestão.">
-                                <label>Mensagem</label>
-                                <textarea class="form-control" rows="10"
-                                    placeholder="Deixe sua mensagem aqui."></textarea>
-                                <button class="btn btn-primary float-right">Enviar</button>
+                                <label for="nome">Nome</label>
+                                <input id="nome" name="nome" type="text" class="form-control" placeholder="Digite seu nome completo." required>
+                                <label for="email">E-mail</label>
+                                <input id="email" name="email" type="email" class="form-control" placeholder="Digite seu e-mail.">
+                                <label for="assunto">Assunto</label>
+                                <input id="assunto" name="assunto" type="text" class="form-control" placeholder="Elogio e sugestão." required>
+                                <label for="mensagem">Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" class="form-control" rows="10"
+                                    placeholder="Deixe sua mensagem aqui." required></textarea>
+                                <input type="submit" value="Enviar">
                             </div>
                         </form>
                     </div>

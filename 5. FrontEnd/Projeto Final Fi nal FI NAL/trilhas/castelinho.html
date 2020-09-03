@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palácio Quitandinha</title>
+    <title>Trilha Castelinho</title>
 
     <!--Bootstrap CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -12,11 +12,12 @@
 
     <!--CSS Style-->
     <link rel="stylesheet" href="../assets/css/secundary.css">
-    <link rel="stylesheet" href="../assets/css/sobre.css">
 
     <!--Fonts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+        <script src="../assets/js/script.js"></script>
 </head>
 
 <body>
@@ -32,8 +33,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            O que fazer?
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O que fazer?
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="../index.html#eventos">Eventos</a>
@@ -43,96 +43,101 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="../sobre.html">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
+                        <a class="nav-link" href="../contato.html">Contato</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Contato</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acessibilidade<i
+                                class="fas fa-universal-access"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" onclick="altoContraste()">Alto Contraste</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
     <!--Fim Menu-->
-    <div class="fantasminha"></div>
+    <div class="fantasminha">
 
     </div>
     <!--Div Fantasma-->
     <section class="conteudo">
-        <div class="container-fluid content">
+        <div class="container-fluid">
             <div class="row">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="../assets/img/TrilhadoCastelinho-3.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../assets/img/TrilhadoCastelinho-2.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../assets/img/TrilhadoCastelinho-1.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
                 <div class="container">
                     <div class="col-md-12">
                         <div class="titulo">
-                            <h2>Sobre o G2AC</h2>
+                            <h2>Trilha do Castelinho</h2>
                         </div>
                         <div class="texto">
-                            <h3>O Grupo.</h3>
-                            <p>O grupo surgiu de um sorteio feito pelo professor Raul, no início da disciplina de nivelamento, no Curso de Residência em Software, do Serratec. Desde então, o grupo vem se mantendo ao longo das demais disciplinas.</p>
-                            <p>É fabuloso ver como pessoas tão diferentes se intro </p>
-                            <p>A equipe G2AC foi criada a partir do projeto Residência de Software do Serratec.
-
-                                Possui como principais características a união, a resiliência e o bom humor.
-                               
-                                É uma equipe que, apesar das diferenças entre si, trabalham como uma única mente em prol do desenvolvimento tecnológico e surgimento de novas ideias, sempre incentivando a criatividade.</p>
+                            <p> O Castelinho fica no bairro Morin. É uma das caminhadas clássicas de Petrópolis,
+                                considerada leve. Proporciona uma visão privilegiada da Baía da Guanabara, do Rio de
+                                Janeiro, de Duque de Caxias e de Magé.</p>
+                            <p>Trilha de fácil acesso e bem marcada, recomendada para todas as idades. Possui uma
+                                represa, onde é captada a água do bairro. O final da trilha possui um pequeno riacho de
+                                água potável. Há ganchos para a prática de rapel.</p>
+                            <p>É considerada a 86ª montanha mais alta de petrópolis. O nome Castelinho se deve a curiosa
+                                formação rochosoa do cume, que lembra um castelo de pedras. A trilha possui vários
+                                outros atrativos como bolders da pedra, uma gruta e nascentes. Trilha do Castelinho.
+                                Saída do Morin em Petrópolis.</p>
+                            <p>Duração 1 h de subida.</p>
+                            <p>Dificuldade Técnica: Baixa (trilha aberta).</p>
+                            <p>Orientação: Fácil.</p>
+                            <p>Distancia 2,6 km ida.</p>
+                            <p>Altitude 1.245 metros.</p>
                         </div>
-                        <div class="row align-items-center rowimpar">
-                            <div class="col-sm-4 d-flex text-center justify-content-center">
-                                    <img src="../assets/img/foto-perfil-Abner.jpg" alt="....." class="rounded-circle">
-                                </div>
-                            <div class="col-sm-8">
-                                <p><b>Abner Jóia, 29 anos.</b></p>
-                                <p>Estudante de Tecnologia pela Unopar. Estudante do programa de Residência em Software
-                                    pelo Serratec. Sou um entusiasta em tecnologia com foco principal para o
-                                    desenvolvimento de programas que criem utilidades a nossa sociedade.</p>
-                            </div>
+                        <!--Fim Texto-->
+                        <div class="informacoes">
+                            <h3>Mais informações</h3>
+                            <br>
+                            <p><b>Visitação:</b> A trilha não possui um horário fixado para a sua visitação
+                                (utilização).
+                                <br>O acesso a Trilha do Castelinho é gratuito.
+                                <br><br><b>LOCALIZAÇÃO</b>
+                                <br>
+                                <br>Rua Oswaldo de Barros, s/nº, Morin, Petrópolis - RJ.
+                            </p>
                         </div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-8">
-                                <p><b>Alessandro Felix dos Santos Azevedo, 47 anos.</b></p>
-                                <p>Estudante de Tecnologia pela Unopar. Estudante do programa de Residência em Software
-                                    pelo Serratec. Sou um entusiasta em tecnologia com foco principal para o
-                                    desenvolvimento de programas que criem utilidades a nossa sociedade.</p>
-                            </div>
-                            <div class="col-sm-4 d-flex text-center justify-content-center">
-                                <img src="../assets/img/foto-perfil-Alessandro.jpg" alt="....." class="rounded-circle">
-                            </div>
+                        <!--Fim Informações-->
+                        <div class="mapa">
+                            <h3>Localização</h3>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.2269940934916!2d-43.16442118540958!3d-22.533168030309774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa7ec8018bc19739!2sTrilha%20Para%20Castelinho!5e0!3m2!1spt-BR!2sbr!4v1599000618846!5m2!1spt-BR!2sbr"
+                                width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen=""
+                                aria-hidden="false" tabindex="0"></iframe>
                         </div>
-                        <div class="row align-items-center rowimpar">
-                            <div class="col-sm-4 d-flex text-center justify-content-center">
-                                <img src="../assets/img/foto-perfil-Caina.jpg" alt="....." class="rounded-circle">
-                            </div>
-                            <div class="col-sm-8">
-                                <p><b>Cainã Machado, 18 anos.</b></p>
-                                <p>Estudante de Tecnologia pela Unopar. Estudante do programa de Residência em Software
-                                    pelo Serratec. Sou um entusiasta em tecnologia com foco principal para o
-                                    desenvolvimento de programas que criem utilidades a nossa sociedade.</p>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-8">
-                                <p><b>Camila Ferreira, 30 anos.</b></p>
-                                <p>Estudante de Tecnologia pela Unopar. Estudante do programa de Residência em Software
-                                    pelo Serratec. Sou um entusiasta em tecnologia com foco principal para o
-                                    desenvolvimento de programas que criem utilidades a nossa sociedade.</p>
-                            </div>
-                            <div class="col-sm-4 d-flex text-center justify-content-center">
-                                <img src="../assets/img/foto-perfil-Camila.jpg" alt="....." class="rounded-circle">
-                            </div>
-                        </div>
-                        <div class="row align-items-center rowimpar">
-                            <div class="col-sm-4 d-flex text-center justify-content-center">
-                                <img src="../assets/img/foto-perfil-Giulia.jpg" alt="....." class="rounded-circle">
-                            </div>
-                            <div class="col-sm-8">
-                                <p><b>Giulia Marcela Mendes, 21 anos.</b></p>
-                                <p>Estudante de Tecnologia pela Unopar. Estudante do programa de Residência em Software
-                                    pelo Serratec. Sou um entusiasta em tecnologia com foco principal para o
-                                    desenvolvimento de programas que criem utilidades a nossa sociedade.</p>
-                            </div>
-                        </div>
+                        <!--Fim mapa-->
                     </div>
                 </div>
                 <!--Fim container-->
@@ -140,7 +145,6 @@
             <!--Fim row-->
         </div>
     </section>
-    <!--Fim da conteudo-->
     <!--Footer aqui-->
     <footer class="page-footer">
         <div class="sociais">
@@ -201,6 +205,7 @@
         </div>
     </footer>
     <!--Fim Footer-->
+
 
     <!--Scripts-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
