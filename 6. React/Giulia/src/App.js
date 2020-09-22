@@ -10,6 +10,7 @@ function App() {
       <Switch>
         <Route>
           <Home path="/" exact component={Home}/>
+          <Cadastro/>      
         </Route>
       </Switch>
       <Global />
